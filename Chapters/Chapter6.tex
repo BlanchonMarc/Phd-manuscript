@@ -1,0 +1,54 @@
+% Chapter 1
+
+\chapter{Conclusion, Perspectives and Future Work} % Main chapter title
+
+\label{Chapter6} % For referencing the chapter elsewhere, use \ref{Chapter1} 
+
+%----------------------------------------------------------------------------------------
+
+% Define some commands to keep the formatting separated from the content 
+
+%----------------------------------------------------------------------------------------
+
+\section{Conclusion}
+
+The general aim of this thesis was to improve scene understanding algorithms by including polarization cues. In Chapter \ref{Chapter2}, we first explored existing segmentation methods using state-of-the-art deep learnin techniques. In addition, we proposed a comprehensive review of the deph estimation field starting from sensor acquisition to deep learning based depth inference.
+In Chapter \ref{Chapter3}, we introduced the fundamental preliminary knowledge of polarimetry and deep learning. We in addition proposed brief explanations on specific concepts used thorough this thesis.
+Chapter \ref{Chapter4} presented the first of two axis of the research conducted during this PhD thesis. Exploring the vast landscape of deep learning PwSS, this chapter emphasizes the complexity to introduce a non-conventional modality to the segmentation field. Thus, we proposed details on procedures ranging from dataset collection to singular augmentation to finalize on segmentation. In more detail, we have presented a end-to-end framework allowing exploitation of polarization cues through deep learning architectures. We subsequently manage to propose two polarimetric-influenced architecture emphasizing either the suitability of the data for such tasks or the necessity of modality-unique augmentation. Both our evaluation benchmarks highlighted extensive segmentation accuracy when addressing the problematic through polarisation prism. Therefore, proof has been made specularity understanding models perform equally or better than texture/color based.
+In Chapter \ref{Chapter5}, the second axis has been exposed. Depth estimation being a recurent problem, we attempted to use polarization to constraint monodepth approach. By aggregating sufficient data and designing a modality representation, we were capable to formalise a surface normal rectification term base on polarization cues. Constraining the problem through this bias showed extensive capabilities of reconstruction specular and transparent surfaces as well as sky delimitation. As a first approach, up to our knowledge, including such modality in the field, we proposed a comparison with state-of-the-art method in the same conditions. Subsequently, this quantitative evaluation of P2D displayed better performances when the network is subject to polarimetric data. 
+Extensive experimentation highlighted P2D being far from perfect generalization. That is to say, in some cases; the method tends to provide erroneous estimates. As a response, Chapter \ref{Chapter5} equally provides an evaluation of extensive range of fusion method. Aiming at combining advantages of both RGB and polarimetric modality, the problem has been formulated as a refinement instead of an end-to-end estimation. From this methods study, numerous strategies have been proposed to eliminate drawbacks of the previously designed method. Ultimately, we proposed simulation of a fusion process based on naive image processing. This last experimentation underline the viability of such fusion approaches to refine depth map. 
+
+
+All the proposed methods have shown excellent performance in both segmentation and depth estimation. We have aggregated specific data which have made accessible greedy algorithms like deep learning. It is undeniable polarimetric data can be beneficial to a large number of approaches.
+
+
+As a general conclusion, it is substantial to acknowledge the importance of data. We have proven that by wisely using unconventional data, algorithms can benefit from it. Despite the tendency to massively aggregate data or to make algorithms more complex, our methods have shown that with less, algorithms can be more accurate. The information provided to deep learning networks is frequently overlooked at the expense of robustness and genericity. Ultimately, a thoughtful choice of data can constrain the problem and simplify it. To such a degree, with less data, it is possible to observe excellent performances. 
+It is impossible to consider autonomy themes if some recurrent phenomena are neglected. Through this thesis, in addition to the proposed methods, we aim to highlight the importance of data. Thus, we hope that estimation using unconventional modalities will be popularized. It would be attractive to move from colorimetry to physics-based vision and thereby feed collaborations allowing the provision of such data.
+
+
+\section{Perspective for polarization in modern computer vision}\label{polaper}
+
+Polarization is a field that has been studied for a very long time. As it was shown in Chapter \ref{Chapter3}, this area has been active for many years. Unfortunately, this is a niche too rarely explored.
+Polarization offers a viable alternative to many computer vision algorithms as shown in \cite{morel2005polarization,morel2006active,morel2007catadioptric,cui2017polarimetric,berger2017depth,rastgoo2018attitude,blin2019road,blin2019adapted,blin2020new}.
+It is notable this modality allows to explore a new angle of vision and defines a completely different space. This unconventional information could be exploited to improve the performance of approaches for which color is not a sufficient discriminant. Finally, the lack of data remain the prime factor preventing the exploration of this domain in the long term with recent algorithms.
+Recently, the price of sensors has largely dropped, and technologies have advanced. While in the past a camera could cost several thousand euros for a minimal resolution, nowadays, these sensors are much more affordable (less than 1,000 euros) and observe a 4K resolution. In addition, some manufacturers have focused on combining multiple modalities by including polarizing filters on top of standard capture arrays. We believe that these advances are encouraging for the field and that these sensors could encourage a wider diffusion of polarization. 
+Based on these facts, we propose some perspectives on polarization in modern computer vision.
+Indeed, this thesis has highlighted that polarimetry can represent an alternative modality for scene understanding. Integrating particular data, it has allowed, upstream of the network, to categorize previously neglected phenomena. The networks have proven their adaptability by revealing the capacity to learn from such information. Finally, a modality such as this one allows a direct link between physics and processing. Many approaches operate in environments prone to specularity, and there is every reason to believe that polarimetry could be used instead of colorization. It would then be possible to estimate 3D motion from the polarization angle or the optical flow. Deducting the camera pose from the orientation changes observed in polarimetry (an idea derived from our augmentation process), segmenting specular instances, or indeed trying to alleviate Fresnel equations to trace the physical properties of materials. But also, many possibilities could emerge from the fusion procedures. Moreover, as we have proposed, it would be possible to aggregate the data to refine certain procedures. Depth estimation, panoptic segmentation, SLAM, all these domains could be based on light information in addition to texture. 
+
+Finally, thanks to deep learning networks, any information can be exploited as long as there is enough of it. The advent of these processing cores has extended the field of possibilities in vision. Their abstraction capacities have released many past constraints and allowed us to observe increased performances. Finally, the only thing missing in polarimetry is a community that collaborates to aggregate data to enlarge the number of interested parties. We hope that this thesis has helped to bring the field of polarization to the forefront by showing its appeal, and it will motivate others to contribute to this component of physics-based vision.
+
+\section{Future Work}
+
+Based on the work presented in this thesis, we give some recommendations for future research.
+
+
+In Chapter \ref{Chapter4} we proposed a segmentation approach. Although the procedure showed interesting performances, it is considerable that the amount of data was small. Also, the cases were particular and the dataset very focused. Thus, it would be attractive to aggregate a larger amount of data by integrating more cases and varied scenes. It would then be possible to compare much more globally the performances between polarization-centric and RGB-centric algorithms. As follows, it would be possible to really compare the generalization capabilities of the networks impacted by polarimetry. An ablation study could be performed to show the generalization and discrimination capabilities of such a method.
+
+
+In Chapter \ref{Chapter5} we proposed P2D, an approach for depth inference from a polarimetric monocular. Despite encouraging performances, the network showed a tendency to produce erroneous estimates in some contexts. In response to this, in this same Chapter, we proposed methods based on multimodal fusion to improve the results and refine the estimated depth maps using a state-of-the-art RGB-centric method. We have estimated several approaches, their respective counterparts and their associated losses. The possibility would be that starting from these described architectures, a multimodal dataset would be acquired allowing the implementation of such approaches to finally verify the viability of the stated concepts.
+
+
+In conclusion, many of the objectives were stated in Section \ref{polaper}. As deep learning becomes more adept at providing reliable estimates, it would be interesting to benefit from it with an unconventional data. We expect these greedy algorithms to facilitate the use of complex modalities and thus offer valuable opportunities for innovation in the upcoming years.
+
+
+

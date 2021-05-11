@@ -1,0 +1,175 @@
+% Chapter 1
+
+\chapter{Introduction} % Main chapter title
+
+\label{Chapter1} % For referencing the chapter elsewhere, use \ref{Chapter1} 
+
+%----------------------------------------------------------------------------------------
+
+% Define some commands to keep the formatting separated from the content 
+\newcommand{\keyword}[1]{\textbf{#1}}
+\newcommand{\tabhead}[1]{\textbf{#1}}
+\newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\file}[1]{\texttt{\bfseries#1}}
+\newcommand{\option}[1]{\texttt{\itshape#1}}
+
+%----------------------------------------------------------------------------------------
+
+\section{Context and Motivation}
+
+For the past sixty years, computer vision has been a recurring theme for researchers. With the ambition of making machines "more human", many works tend to allow machines to see and understand similarly to the cognitive capacities of humans. This interest took on even more meaning when learning applications became technologically accessible. The advent of Machine Learning (ML) methods has made it possible to develop increased cognitive abilities applicable to computers and thus to popularize high level domains like scene understanding.
+
+In this thesis we address the problem of understanding scenes but, in addition, we focus on the use of an unconventional modality: polarimetry. Starting from the postulate that the vast majority of efficient methods depend on Red Green Blue (RGB), it seems attractive to try to exploit the knowledge acquired in this space to export it and adapt it to new image modes more suitable to certain situations.
+In this perspective, this thesis aims to use polarization to obtain a better scene understanding.
+From a global point of view, there are a multitude of approaches to scene comprehension: classification, semantic segmentation, 3D reconstruction, etc. We will particularly tackle the tasks of segmentation and reconstruction. 
+
+
+Firstly, the semantic segmentation task corresponds to a pixel wise classification of an image. Allowing labels to be assigned at the pixel level as opposed to the image level for standard classification, this area focuses on the semantic aspect. Indeed, the overall objective is to differentiate but also to recognize. The uses of semantic segmentation are diverse and allow, for example, the accurate recognition of humans in an urban environment or the clear delineation of roads (all this in an autonomous vehicle context).
+Early approaches such as \cite{ohta1978analysis} allowed the delimitation of the domain as well as its distinction from other approaches of understanding such as classification\cite{agin1980computer}, instance segmentation\cite{edelman1989integrating} etc. Despite a good number of pure image-processing methods, nowadays and in recent years, many methods are based on Deep Learning (DL) and Deep Convolutional Neural Networks (DCNNs). Indeed, the increased learning capabilities as the approaches have evolved have significantly outperformed previously proposed methods. This being stated, the vast majority of contributions on semantic segmentation are now DL-based. 
+Requiring a massive amount of data as well as significant computing power, learning architectures allow the translation from an image space to a features space. As a result, networks are capable to learn from data redundancy, the attributes necessary for semantic segmentation. Traditionally, the information provided to these processing modules are RGB images allowing an almost direct discrimination in the color space. However, it is notable that the constraints related to the modality are exported in the network. As follows, the events to which the modality implemented is not sensitive are by extension exported in the DCNN capabilities. 
+Many methods have been developed to increase the abstraction capabilities of the networks to overcome data drawbacks. Networks have become deeper and deeper, the number of parameters has increased, features have become more abstract and as a consequence, the requirements in terms of data number and computational capacity have increased.
+In this context of semantic segmentation, our intention was to introduce the possibility of using polarimetry as a data source, but also to study whether the change of information could limit the use of greedy and/or datavore methods. Indeed, the idea being to use a different modality to discriminate, prior to the network, the information to drastically reduce the need for feature abstraction.
+
+
+In a second stage, the reconstruction of 3D scenes represent a radically other domain. The objective is to build a depth map corresponding to the distance between the lens and the objects in the scene. This sub-domain of computer vision is operated for multiple purposes ranging from augmented reality to autonomous navigation and surface analysis. 
+Ultimately, this part of the vision is extremely demanding in terms of resources and pre-requisites. Whether it is a Shape from Motion method, stereovision or multiple view geometry, each of these approaches, despite their efficiency, are made complex by their acquisition constraints.
+More recently, novel approaches are based on monocular vision and the use of DCNN to estimate depth. In end-to-end manner, the goal is to be able to infer from a simple image a precise depth map. Thus, the more robust these methods are, the less we demand ground truths drawn by LiDaRs that are rendered ineffective during weather alterations. Moreover, as these approaches have evolved, the constraints of supervision have been freed to finally obtain completely self-supervised methods. This has allowed a popularization of the field since it was no longer necessary to maintain an annotated database. Moreover, since depth annotation is generated by tools sometimes rendered inept, some errors could be reduced by generalizing cost functions.
+Based on the statement of perspective geometry, the vast majority of approaches are RGB-centric since the visual data are usual and straightforward (colorimetry). This is also explained by the almost unique use of a few datasets like Kitty and CityScapes, which are only available in RGB.
+As a consequence, despite similar formulations, non-conventional modalities have not been treated in this field probably due to lack of data. 
+Regarding depth map estimation, our goal in this thesis is to incorporate polarization in state-of-the-art methods to take advantage of this data space. 
+
+The overall objective being to operate these algorithms in complex urban areas and/or with altered weather conditions, the polarimetric space is an excellent data candidate. Briefly, since polarimetry is by definition the modality sensitive to reflection phenomena and urban areas are prone to specularity (cars, windows, rain, puddles, etc.), polarization-driven processing units could show increased capabilities.
+Therefore, the global intention of this thesis is to merge polarization and current computational tools to benefit from the advantages of both parties. Thus, by moving away from RGB-centric methods, it would be possible to show improved approaches by the specific modality and therefore obtain segmentation and reconstruction methods robust to specularity and weather changes.
+
+
+We fervently believe in polarization and its discriminative aspects to introduce a further dimension to computer vision algorithms. Combining the knowledge acquired over time with this new data could inject a new impetus to some problems requiring physical understanding. In order to undertake a first step towards these polarization-centric systems, we propose to investigate two fundamental areas of computer vision: segmentation and scene reconstruction. These problems have been chosen as initiators to bring polarization closer to the actual computer vision domain. To such a degree, we aim at popularizing approaches based on polarimetry or any other physics-based vision by demonstrating the usefulness of such a component to traditional approaches.
+
+
+
+\section{Scope and Challenges}
+This thesis addresses the problem of understanding urban scenes exploiting polarization. Noting the vast majority of algorithms are RGB-centric and suffer from inabilities to categorize certain phenomena, we propose polarization as a discriminant factor to obtain an accurate understanding of urban scenes. By priorly characterizing the scenes in a different space, it is then possible to consider the problems according to various attributes. Consequently, we have investigated the possibilities of understanding urban scenes using polarization cues. Specifically we explored different solutions like learning-based segmentation and deep learning depth reconstruction from a monocular.
+
+\subsection{Pixel-wise semantic segmentation}
+
+The problem of semantic segmentation has been established for a long time. Indeed, it is a question of differentiating the various zones of interest of an image. To address this problem, many methods have been developed.
+Whether it is image processing techniques, defining attractive frames and features to delimit the diverse objects of the scenes, or learning-based methods, all have demonstrated the ability of machines to "understand" these particular contexts. Most of these methods rely on the differentiation of textures through RGB-centric systems. This practice assumes texture is a sufficient discriminant to establish a robust segmentation. However, remarkably few methods consider phenomena like specularity. They are often neglected because they are not present in the databases. Indeed, these surfaces have the particularity to observe textureless or saturation computations. One can say that, traditionally, these issues are avoided by the absence of such cases in the images. Since the methods do not observe such occurrences, they are uncharacterized.
+Our method does not rely on the textural aspect of the surfaces but rather considers the interaction of these with light.
+It then becomes necessary to completely rebuild the segmentation pipeline to move from an RGB-centric to a polarization-centric approach. Consequently, we address the problem of acquiring a reliable database including specular areas traditionally avoided. 
+Recently, the use of deep learning approaches has increased the ability to appreciate scenes. We therefore propose implementing this similar kind of approach. Furthermore, we investigate the possibility and viability of operating such models with physics-based vision. 
+And since these greedy algorithms require a significant amount of image, we investigate the possibility to increase the size of the database using augmentation processes. In order not to alter the physical and crucial information to the characterization of specularity, we design transformations adapted to infer realistic and physically intact images.
+
+Finally, we propose a complete pipeline, from data to pre-processing to network, of pixel-wise semantic segmentation through deep learning.
+
+\subsection{Monocular depth inference}
+To understand the scenes, one can estimate the distance between object and camera. Hence, many methods have emerged to reconstruct 3D scenes. Traditionally, from a monocular, the movement of the camera is necessary to project points in 3D space. Recent approaches have shown that by using learning, many constraints can be avoided. For example, the Monodepth approaches have proven it is possible to infer a depth map from a static image.
+Similar to the field of segmentation, these methods are exclusively RGB-centric due to the availability of databases required for such algorithms. As a consequence, some visual phenomena are ignored due to the lack of understanding of these phenomena by the operated modality. Once again, the specularity being however omnipresent in urban areas, it is ignored and directly impacts the genericity of the algorithms.
+We then propose evaluating the possibilities of using polarization as a source modality for 3D reconstruction. With the objective of characterizing both diffuse and specular areas, we aim at establishing a set of terms allowing to regularize the inference of a depth map. By infusing polarization cues into the deep learning model, we therefore seek a robust specularity-invarient algorithm, which will reconstruct urban scenes accurately.
+To this end, a novel P2D approach is introduced to include these aspects in the monodepth domain. P2D considers both geometric and polarimetric cues to address the depth map estimation problem. The regularization terms can be further exploited to derive innovative approaches and move towards more and more robust methods.
+
+\section{Contributions}
+The next section details each work highlighting contributions and associated publications as author \cite{blanchon2019outdoor,blanchon2019utilisation,blanchon2021p2d,blanchon2021polarimetric,blanchon2020intro} or co-author \cite{zhang2019exploration,zhang2019explorationn}.
+
+\subsection{Peer-review publications}
+\textbf{Pixel-wise Semantic Segmentation \& Augmentation. }The first major part of our work is presented in Chapter \ref{Chapter4}. Bringing together segmentation and augmentation, the chapter describes the scope of the research conducted to introduce polarimetry in the field of deep learning and also, more specifically, PwSS.
+We therefore propose a first of its kind approach allowing to use polarization cues in segmentation which sets the state of the art of the domain. We also demonstrate the usefulness of such information by comparing it with approaches focused on colorimetry. To operate these algorithms, we needed a set of polarization compatible transforms. We subsequently proposed a set of possible augmentations and their corresponding regularization.
+
+Our contributions in this area are primarily motivated by a desire for more recurrent use of polarization in modern computer vision. We then aimed at demonstrating that the characterization of light interactions in a scene is sufficient to accurately determine object classes. Based on the observation that a majority of objects in urban environments are subject to reflection, we then defined a suitable representation to both differentiate objects and depict polarimetry faithfully. 
+Due to a lack of data, a multimodal dataset was acquired allowing both training and a fair comparison with similar algorithms on other data. The data being never sufficient, we have also designed augmentation processes allowing to obtain new images respecting the physical integrity of the modality.
+Ultimately, a comparative study allowed us to estimate that polarization had an advantage over colorimetry for the segmentation of urban scenes. Moreover, we proved that our augmentation process allowed us to observe superior results. Ultimately, our benchmark on augmentation highlighted that it was preferable not to augment than to augment physics-based images in the usual way without taking into account the physical dimension of the data.\\
+
+\vspace*{8mm}
+\hspace*{10mm} ASSOCIATED PUBLICATIONS (SEGMENTATION):
+\begin{itemize}
+	
+	\item "Outdoor Scenes Pixel-wise Semantic Segmentation using Polarimetry and Fully Convolutional Network"\\
+	\textbf{Marc Blanchon}, Olivier Morel, Yifei Zhang, Ralph Seulin, Nathan Crombez, D{\'e}sir{\'e} Sidib{\'e}\\
+	VISAPP 2019 - \cite{blanchon2019outdoor}
+	
+	\item "Utilisation de la polarim{\'e}trie pour la segmentation de sc{\`e}nes ext{\'e}rieures avec un r{\'e}seau convolutif"\\
+	\textbf{Marc Blanchon}, Olivier Morel, Yifei Zhang, Ralph Seulin, Nathan Crombez, D{\'e}sir{\'e} Sidib{\'e}\\
+	ORASIS 2019 - \cite{blanchon2019utilisation}
+	
+	\item "Exploration of Deep Learning-based Multimodal Fusion for Semantic Road Scene Segmentation."\\
+	Yifei Zhang, Olivier Morel, \textbf{Marc Blanchon}, Ralph Seulin, Mojdeh Rastgoo, D{\'e}sir{\'e} Sidib{\'e}\\
+	VISAPP 2019 \&  ORASIS 2019 - \cite{zhang2019exploration,zhang2019explorationn}
+	
+\end{itemize}
+\vspace*{8mm}
+\hspace*{10mm} ASSOCIATED PUBLICATION (AUGMENTATION):
+\begin{itemize}
+	\item "Polarimetric image augmentation"\\
+	\textbf{Marc Blanchon}, Olivier Morel, Fabrice Meriaudeau, Ralph Seulin, D{\'e}sir{\'e} Sidib{\'e}\\
+	ICPR 2020 - \cite{blanchon2021polarimetric}
+\end{itemize}
+\vspace*{8mm}
+\hspace*{10mm} ASSOCIATED COURSE:
+\begin{itemize}
+	\item "Introduction to Polarization for Rendering and Vision"\\
+	Kai Berger, \textbf{Marc Blanchon} - equal contribution\\
+		SIGGRAPH Asia 2020 Courses - \cite{blanchon2020intro}
+\end{itemize}
+\vspace*{8mm}
+\textbf{Monocular depth estimation using polarization cues. }The second line of work, presented in Chapter \ref{Chapter5}, corresponds to the estimation of a depth map from a polarimetric monocular. In this chapter we present, to our knowledge, the first approach inferring a depth map from polarization cues using deep learning (similarly to the proposed work on segmentation/augmentation).
+We examine the possibilities of loss term regularization to improve the depth maps traditionally deduced from RGB-centric algorithms. As follows, we aim to constrain the problem by formalizing an approach based on the relationship between surface normals and polarization. Since there is no available data, we also propose a polarimetric dataset of dynamic urban areas under different weather conditions. By this way, we aim to categorize the specular areas commonly neglected. 
+Ultimately, we propose improvement possibilities since it has been found that our initial approach is not fully generic. This heads us to design different multimodal fusion methods that could be evaluated and should be made viable. \\
+
+\vspace*{8mm}
+\hspace*{10mm} ASSOCIATED PUBLICATION:
+\begin{itemize}
+	\item "P2D: a self-supervised method for depth estimation from polarimetry."\\
+	\textbf{Marc Blanchon}, D{\'e}sir{\'e} Sidib{\'e}, Olivier Morel, Ralph Seulin, Daniel Braun, Fabrice Meriaudeau\\
+	ICPR 2020 - \cite{blanchon2021p2d}
+\end{itemize}
+\pagebreak
+\vspace*{8mm}
+\textbf{Towards scene understanding through polarization cues. }Since we have proposed a number of methods to characterize urban scenes through polarization, we propose integrating all these works into a scene descriptor pipeline. The effort has been produced beforehand to force the use of monoculars in all cases of algorithm establishment. Thus, the fusion of these approaches is possible, starting from a polarimetric monocular, to infer a multidimensional descriptive image composed of segmentation, depth and polarization indices.\\
+
+\vspace*{8mm}
+\hspace*{10mm} ASSOCIATED PUBLICATION:
+\begin{itemize}
+	\item "-"\\
+	\textbf{Marc Blanchon}, D{\'e}sir{\'e} Sidib{\'e}, Olivier Morel, Ralph Seulin-, Fabrice Meriaudeau\\
+	-
+\end{itemize}
+\subsection{Open source softwares / datasets}
+With the objective of promoting the dissemination and use of our algorithms and this particular data, we offer all of our work in open source:
+
+\begin{itemize}
+	\item \textbf{Interpol} - A comprehensive list of interpolation method for polarization. Provides an integrated comparison tool.\\
+	\url{https://github.com/BlanchonMarc/InterPol}
+	\item \textbf{Pola\_NewtonPolynomial} - Demosaicking DoFP images using Newton's polynomial interpolation python adaptation of the initial shared matlab code.\\
+	\url{https://github.com/BlanchonMarc/Pola_NewtonPolynomial}
+	\item \textbf{P\_Augmentor} - Augmentation toolbox for polarization. Offer multimodal augmentation possibilities with transformation coherency.\\
+	\url{https://github.com/BlanchonMarc/P_Augmentor}
+	\item \textbf{AcquisitionFromTopics} - Multimodal synchronized acquisition through ROS.\\
+	\url{https://github.com/BlanchonMarc/Ros_AcquisitionFromTopics}
+	\item \textbf{PolaBot} - Multimodal RGB / NIR / Polarimetric dataset with segmentation annotation.\\
+	\url{https://vibot.cnrs.fr/polabot.html}
+	\item \textbf{Dense Alignment Toolbox} - A toolbox allowing for dense multimodal alignement \\
+	\url{https://github.com/BlanchonMarc/process-vibotorch/tree/master/Alignment}
+	\item \textbf{Vibotorch} - A pytorch wrapper allowing for reproduction of results for the segmentation part of this thesis. Embeding metrics, dataset management, etc.\\
+	\url{https://github.com/BlanchonMarc/vibotorch}
+	\item \textbf{Segmentation and P2D models} \\
+	Models available on demand
+	\item \textbf{P2D training and testing algorithms} \\
+	Source code available on demand
+	\item \textbf{Urban scenes under different weather conditions through polarization} \\
+	Dataset available on demand
+\end{itemize}
+\subsection{Internships supervision}
+During this PhD thesis, I had the opportunity to supervise three interns:
+\begin{itemize}
+	\item Jamilu Sulaiman - Ms Computer Vision - 2019 : \textit{"Polarimetric stereovision approach for 3D reconstruction"}
+	\item K{\'e}vin Secret-Morland - Ms Computer Vision - 2020: \textit{"Multimodal fusion with polarization"}
+	\item Th{\'e}o Petitjean - Ms Computer Vision - 2020: \textit{"Unsupervised polarimetric image segmentation"}
+\end{itemize}
+
+\section{Organization}
+This dissertation is divided into the following chapters:\\
+\textbf{Chapter \ref{Chapter2}} provides a comprehensive overview of the related works by assessing both the learning-based segmentation field and the depth estimation domain.\\
+\textbf{Chapter \ref{Chapter3}} introduces multiple concepts of either polarization and deep learning to avoid redundancies along this manuscript.\\
+\textbf{Chapter \ref{Chapter4}} proposes solutions to segment complex urban scenes by using both polarization and deep learning. Due to the constraining framework, this Chapter also presents the respective dependencies of the algorithms such as: dataset construction, alignment, augmentation etc.\\
+In addition, Chapter \ref{Chapter4} provides a comprehensive range of evaluations for the different segmentation propositions.\\
+\textbf{Chapter \ref{Chapter5}} explores how to infer depth from a monocular polarimetric image. We propose a first-of-its-kind deep learning-based algorithm using polarization cues to derive depth maps. Additionally, capitalizing on the drawbacks of the previous method, we propose a comprehensive evaluation of fusion methods as well as a first step towards RGB and polarization fusion for accurate depth refinement.\\
+\textbf{Chapter \ref{Chapter6}} gives the final discussion of this thesis and ideas for future work on the presented problems.
+

@@ -1,0 +1,40 @@
+% Appendix A
+
+\chapter{P2D - Hyper-parameters benchmark} % Main appendix title
+\label{AppendixC} % For referencing this appendix elsewhere, use \ref{AppendixA}
+
+
+\begin{table}[H]
+	\centering
+	
+	\begin{sideways}%
+		\resizebox{1\textwidth}{!}{%
+			\begin{tabular}{|c|Z|c|c|c|c|c|c|c|c|c|c|}
+				\hline
+				Symbol & Name & \# Layer Resnest & Pre-Trained & Pose Estimator & Epoch & Lr & Clipping Low & Clipping High & Polarimetry Only & Smoothness & Loss \\ \hline
+				$\clubsuit$          & mononew2      & 50 & No  & posecnn & 100 & e-4 & 0.4 & -   & -   & 2nd e-2  & No Rw \\ \hline
+				$\diamondsuit$       & newloss       & 50 & No  & posecnn & 100 & e-4 & 0.4 & -   & -   & 2nd e-2  & No Rw \\ \hline
+				$\heartsuit$         & GodardPre     & 18 & Yes & posecnn & 40  & e-3 & 0.4 & -   & -   & 1st e-2  & No Rw \\ \hline
+				$\spadesuit$         & 2GodardPre    & 18 & Yes & posecnn & 18  & e-3 & 0.4 & -   & -   & 1st e-2  & No Rw \\ \hline
+				$\square$            & 3GodardPre    & 18 & Yes & posecnn & 30  & e-3 & 0.4 & -   & -   & 1st e-3  & No Rw \\ \hline
+				$\triangledown$      & SeparatePola  & 18 & Yes & shared  & 40  & e-3 & 0.4 & -   & -   & 1st e-3  & No Rw \\ \hline
+				$\triangle$          & 4separatePola & 18 & Yes & shared  & 22  & e-4 & 0.4 & -   & -   & 1st e-3  & No Rw \\ \hline
+				$\blacklozenge$      & 5separatePola & 18 & Yes & shared  & 40  & e-4 & 0.4 & -   & -   & 1st e-3  & No Rw \\ \hline
+				$\blacksquare$       & 6separatePola & 50 & Yes & posecnn & 40  & e-4 & 0.4 & -   & -   & 1st e-3  & No Rw \\ \hline
+				$\blacktriangle$     & 7\_oldloss    & 50 & Yes & posecnn & 40  & e-4 & 0.4 & -   & -   & 1st e-3  & Rw    \\ \hline
+				$\blacktriangledown$ & 8polaonly     & 50 & Yes & posecnn & 14  & e-4 & 0.8 & -   & Yes & 1st e-3  & Rw    \\ \hline
+				$\bigcirc$           & 9polaonly     & 50 & Yes & posecnn & 40  & e-4 & 0.6 & -   & Yes & 1st e-3  & Rw    \\ \hline
+				$\circledast$        & 10polaonly    & 50 & Yes & posecnn & 40  & e-4 & 0.4 & -   & Yes & 1st e-3  & Rw    \\ \hline
+				$\circledcirc$       & 10polaonly\_2 & 50 & Yes & posecnn & 2   & e-4 & 0.4 & 0.8 & Yes & 1st e-3  & Rw    \\ \hline
+				$\circleddash$       & 11polaonly    & 50 & Yes & posecnn & 30  & e-4 & 0.4 & 0.8 & Yes & 1st e-3  & Rw    \\ \hline
+				$\dagger$            & 12polaonly    & 50 & Yes & posecnn & 40  & e-5 & 0.4 & 0.8 & Yes & 1st e-3  & Rw    \\ \hline
+				$\intercal$          & 13polaonly    & 50 & Yes & posecnn & 40  & e-5 & 0.4 & 0.8 & Yes & 1st e-3  & Rw    \\ \hline
+				P2D                  & P2D     & 50 & No  & posecnn & 40  & e-4 & 0.4 & 0.8 & No  & 2nd 5e-3 & Rw    \\ \hline
+			\end{tabular}%
+		}
+	\end{sideways}
+	\caption[Hyper-parameters of Networks]{Hyper-parameters of Networks. No Rw stands for taking into account either the reflected wave or calculating a $\pi/2$ uncertainty. Polarimetry only consider passing only polarimetric characteristics without intensity.}
+	\label{tab:hyper}
+\end{table}
+
+\pagebreak
