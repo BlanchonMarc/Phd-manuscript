@@ -595,7 +595,7 @@ We manipulate the non-augmented images from PolaBot (see Section \ref{data_pol})
 
 The images presented to the network show urban scenes that are conducive to reflection. As a reminder, we assume a large number of objects are reflective in urban areas such as: cars, windows or wet roads.
 Thus, to highlight the respective capabilities of the networks trained jointly with colorimetry and polarimetry, the images were manually annotated with eight particular classes.
-These eight classes designed for autonomous robotics are: Buildings (gray), Car (red), Road (orange), Sky (green), Water (blue), Window (light yellow), None (white) and Unlabeled (black). These classes are clearly differentiated by their segmented color and were determined for their interest in complex areas but also because they can lead to confusion with standard sensors. Also, the None class represents all the areas that have been judged uninterestingly for our comparison (e.g. trees, sidewalks,...) and the Unlabeled class comes from manual annotation errors.
+These eight classes designed for autonomous robotics are: \textcolor{sky}{Sky}, \textcolor{water}{Water}, \textcolor{windows}{Windows}, \textcolor{road}{Road}, \textcolor{car}{Cars}, \textcolor{buildings}{Building}, \textcolor{none}{None} and \textcolor{black}{Unlabeled}. These classes are clearly differentiated by their segmented color and were determined for their interest in complex areas but also because they can lead to confusion with standard sensors. Also, the None class represents all the areas that have been judged uninterestingly for our comparison (e.g. trees, sidewalks,...) and the Unlabeled class comes from manual annotation errors.
 
 
 Therefore, a simple metric, allowing an explicit comparison, was chosen. Indeed, the accuracy per class has been defined as:
@@ -697,12 +697,12 @@ As shown in Figure \ref{fig:resultspwss}, the qualitative results seem almost id
 	\caption{PwSS quantitative results comparing polarimetry and RGB.}
 	\label{AccDiff}
 	\resizebox{1\textwidth}{!}{
-	\begin{tabular}{c|c|c|c|c|c|c|c||c|c|}
-		\cline{2-9}
-		& \textcolor{sky}{Sky} & \textcolor{water}{Water} & \textcolor{windows}{Windows} & \textcolor{road}{Road} & \textcolor{car}{Cars} & \textcolor{buildings}{Building} & \textcolor{none}{None} & Mean \\ \cline{2-8} \hline
-		\multicolumn{1}{|c|}{Polarimetry} & 75.34 \%                    & 75.70 \%                      & 82.85 \%                       & 77.82 \%                     & 71.40 \%                    & 87.69 \%                         & 78.95 \% & 78.54 \%                    \\ \hline
-		\multicolumn{1}{|c|}{RGB} & 89.57 \% & 78.61 \% & 44.50 \% & 78.45 \% & 48.48 \% & 67.84 \% & 83.4 \% & 69.83 \%                    \\ \hline \hline
-		\multicolumn{1}{|c|}{Difference}  & -14.23\% & -3.51 \% & 38.35 \% & -0.63 \% & 22.92 \% & 19.85 \% & -4.45 \%  & 8.71 \%                  \\ \hline
+	\begin{tabular}{lccccccccc}
+
+		 & & \textcolor{sky}{@sky} & \textcolor{water}{@water} & \textcolor{windows}{@windows} & \textcolor{road}{@road} & \textcolor{car}{@cars} & \textcolor{buildings}{@building} & \textcolor{none}{@none} & mean \\ \cline{3-10}
+		 Model& &  \multicolumn{8}{c}{higher is better}\\ \hline
+		Polarimetry & & .753                     & .757                       & \textbf{.828}                        & .778                      & \textbf{.714}                     & \textbf{.876}                          & .789  & \textbf{.785}                     \\ 
+		RGB & & \textbf{.895}  & \textbf{.786}  & .445  & \textbf{.784}  & .484  & .678  & \textbf{.834}  & .698                     
 	\end{tabular}}
 	
 \end{table}
