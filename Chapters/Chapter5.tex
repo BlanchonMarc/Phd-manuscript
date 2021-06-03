@@ -14,34 +14,34 @@
 This chapter is dedicated to depth estimation using a polarimetric monocular. We seek to infer, from a unique polarimetric view, a dense depth map while eliminating the recurrent problems of standard methods (saturation, specularity/reflection implied erroneous estimation, etc.). Indeed, since data from uncontrolled outdoor environments can be subject to numerous alterations, whether meteorological or due to the sensor, the algorithm should be robust and take into account all these characteristics. To this end, we propose a polarization-based approach of monodepth (MD).\\
 
 As detailed in Chapter \ref{Chapter2}, a remarkably large number of approaches have been used to infer a depth map from a single view. Due to the need for data representativeness, a vast majority of approaches rely on colorimetric images. On the contrary, it is noteworthy that all these methods show increased capabilities and allow consistent estimation. Consequently, MD represents a promising candidate and above all a significant baseline for altered data assessment. Among the numerous works in literature, it is possible to extract a method that has — in part — catalyzed the craze for MD, Godard et al.\cite{godard2017unsupervised}. 
-This approach is very promising since it uses two processes exportable to polarimetry: unsupervised learning and generically formulated loss through the statement of perspective geometry. For the sake of robustness, the unsupervised approach is preferred since it negates the cost of data annotation. Indeed, ground truth depth maps are tedious to acquire and often very inaccurate. As a result, the non necessity of them reduces the complexity of training but at the cost of a loss function of a different formulation. 
+This approach is very promising since it uses two processes exportable to polarimetry: unsupervised learning and generically formulated loss through the statement of perspective geometry. To obtain more robust algorithms, the unsupervised approach is preferred since it negates the cost of data annotation. Indeed, ground truth depth maps are tedious to acquire and often very inaccurate. As a result, the non necessity of them reduces the complexity of training but at the cost of a loss function of a different formulation. 
 Secondly, the cost function shows adaptation and generalization capabilities. Borrowing the formulation of perspective geometry, it is therefore functional in all image spaces. It allows reconstructing a depth map from two views during training similarly to stereovision reconstruction algorithms.
-By all these aspects, \cite{godard2017unsupervised} is a process exploitable with polarization since the prerequisites are not in conflict with space. 
+By all these aspects, \cite{godard2017unsupervised} is a process exploitable with polarization since the prerequisites are not in conflict with the modality since the formulation is applicable to such space. 
 In a second step, Godard et al. improved their method to include aspects of multi-scale, masking of immobile/occlusion zones. In \cite{godard2019digging}, a field of possibilities is then opened, showing it is possible to limit the cost function and thus to add additional discriminant criteria to it.
-From this last contribution, we propose Polarimetry to Depth (P2D), a method adapted to polarimetric imaging. By extending the loss function to include a polarimetric term we propose a new network that will be subject to the constraints of perspective geometry — which are valid for any image pair — as well as sensitive to polarization data. Due to the prerequisites of such approaches, we propose a brand new data set that will be representative of road scenes. Plus, since one of the core objectives is to be invariant to weather changes, we have aggregated this set of images captured in diverse conditions. The proposed approach has been validated by the various experiments made possible by this dataset.
+From this last contribution, we propose Polarimetry to Depth (P2D), a method adapted to polarimetric imaging. By extending the loss function to include a polarimetric term we propose a new network that will be subject to the constraints of perspective geometry — which are valid for any image pair — as well as sensitive to polarization data. Due to the prerequisites of such approaches, we propose a new data set that will be representative of road scenes. Plus, since one of the core objectives is to be invariant to weather changes, we have aggregated this set of images captured in diverse conditions. The proposed approach has been validated by the various experiments made possible by this dataset.
 Ultimately, since P2D showed some flaws in some experiments, we proposed other fusion-based methods. 
 Indeed, P2D seems to be too relying on visual features, and thus showing weaknesses of genericity, we concluded it was necessary to use both polarimetric and colorimetric information. To accomplish this task and thus to group two very different types of images, we had to reverse-engineer multiple fusion methods and evaluate their validity in relation to the context. Ultimately, we propose a cascaded network method as well as a cascaded double loss to finally discriminate only the normals without passing specifically in the 3D space. With this approach we reduce the impact of inaccuracies when changing consecutive spaces and therefore address the problem in a more appropriate way.
 
 \section{Introduction}
-The scene reconstruction represent a major task in computer vision. It offers an observation of the three-dimensional world accurate in shape, size and geometric structure. This explains its great usefulness since it allows an increased understanding and thus a massive potential of application.
+Scene reconstruction represents a major task in computer vision. It offers an observation of the three-dimensional world accurate in shape, size and geometric structure. This explains its great usefulness since it allows an increased understanding and thus a massive potential of application.
 
 There are multiple possibilities to obtain a three dimensional scene reconstruction. Each method has its own constraints. A pair of cameras will subsequently allow the reconstruction by stereovision and operating a registration and a camera-to-camera projection.
 A mobile 2D camera, on the other hand, will allow the reconstruction of the scene using registration through a sequence of images using Visual Odometry.
-In each of these cases, the methods suffer from the dynamicity of the scenes and therefore produce artifacts. To be specific, the monocular method operating a visual odometry-based registration is valid only for static parts of the scenes.
+In each of these cases, the methods suffer from the motion in the scenes and therefore produce artifacts. To be specific, the monocular method operating a visual odometry-based registration is valid only for static parts of the scenes.
 
-To eliminate these drawbacks, some methods are DL-based and show improved capabilities but especially a lifting of past constraints.Monocular supervised methods learn the direct correspondence between an input image and a ground truth image. These preliminary methods although reducing the constraints requires a large dataset of images and, above all, their corresponding accurate reconstruction which makes them difficult to use, especially with a new data type. 
+To eliminate these drawbacks, some methods are DL-based and show improved capabilities but especially a abstraction of past constraints.Monocular supervised methods learn the direct correspondence between an input image and a ground truth image. These preliminary methods although reducing the constraints require a large dataset of images and, above all, their corresponding accurate reconstruction which makes them difficult to use, especially with a new data type. 
 
-To avoid aggregating heavy and imprecise datasets, unsupervised methods do not need ground truth at the cost of a more complete loss function. Indeed, a simple observation is databases are quite unreliable. Specifically, when it is necessary to have an accurate depth map, the acquisition processes are unaccurate enough. Essentially, for this kind of acquisition, a LiDaR is used. As follows, it will project a laser band and measure the return time of the reflected beam. This is valid on one condition, that the laser is undiverted and therefore returns, unaltered, to the sensor. Under ideal conditions this method is extremely efficient. On the other hand, a substantial majority of approaches address the problem of reconstruction in urban scenes. One observation is that cars are reflective and therefore subject to laser deflection. Also, in uncontrolled areas like these, there may be multiple surfaces modifying the light rays (windows, mirrors, ...). Ultimately, outdoor acquisitions are subject to climate change, rain, and therefore water accumulation on the tracks/objects which modify the interaction of light with the surfaces. It is then possible to see the datasets are acquired only under certain conditions and that they periodically produce artifacts/imprecisions.
-As a reminder, a DCNN is generic at most as much as the dataset on which it has learned. Thus, from these observations, despite a non-supervised approach and consequently a loss supposed to bring this genericity, the approaches suffer from various weaknesses. Specifically, the estimation of specular surfaces is often incorrect and due to the nature of the operating scenes, these algorithms seem difficult to deploy in real conditions of use (for autonomous cars for example).
+To avoid aggregating heavy and imprecise datasets, unsupervised methods do not need ground truth at the cost of a more complete loss function. Indeed, a simple observation is that databases are quite unreliable. Specifically, when it is necessary to have an accurate depth map, the acquisition processes are inaccurate enough. Essentially, for this kind of acquisition, a LiDaR is used. As follows, it projects a laser and measure the return time of the back-scattered beam. This is valid on one condition, that the laser is undiverted and therefore returns, unaltered, to the sensor. Under ideal conditions this method is extremely efficient. On the other hand, a substantial majority of approaches address the problem of reconstruction in urban scenes. One observation is that cars are highly reflective and therefore subject to laser erroneous reflection due to the specularity aspect of the surface. Also, in uncontrolled areas like these, there may be multiple surfaces modifying the light rays (windows, mirrors, ...). Ultimately, outdoor acquisitions are subject to climate change, rain, and therefore water accumulation on the tracks/objects which modifies the interaction of light with the surfaces. It is then possible to see the datasets are acquired only under certain conditions and that they periodically produce artifacts/imprecisions.
+As a reminder, the genericicty of the DCNN is highlly dependent on the data distribution it was built on. Thus, from these observations, despite a non-supervised approach and consequently a loss supposed to bring this genericity, the approaches suffer from various weaknesses. Specifically, the estimation of specular surfaces is often incorrect and due to the nature of the observed scenes, these algorithms seem difficult to deploy in real conditions of use (for autonomous cars for example).
 
-We propose using the luminous charateristics as an attachment point for our method. While previous approaches suffered from their lack of understanding of certain light phenomena we propose to use them to the advantage of our method. While specularity was mostly neglected and poorly estimated in the color space, it is particularly clearly defined in the polarimetric space. As follows, we aim at keeping the accurate estimates of the previous algorithms while aggregating the knowledge of surface-to-light interraction. Given a sufficient number of representative polarimetric images, we aim to produce high quality accurate reconstructions by exploiting both visual features and polarization data.
+We propose using the light charateristics as an attachment point for our method. While previous approaches suffered from their lack of understanding of certain light phenomena we propose to use them to the benefit of our method. While specularity was mostly neglected and depth in these areas are poorly estimated in the color space, it is particularly clearly defined in the polarimetric space. As follows, we aim at keeping the accurate estimates of the previous algorithms while aggregating the knowledge of surface-to-light interaction. Given a sufficient number of representative polarimetric images, we aim to produce high quality accurate reconstructions by exploiting both visual features and polarization data.
 A DL network will then be fed with polarimetric images and constrained by a particular loss integrating polarization specific terms. In a first step, we propose a method that is only dependent on polarimetric images. In a second step, we propose to investigate fusion methods that keep the viability of past methods while adding extra precision on specular areas. 
 
 
 \section{Depth-to-polarization interconnections}
 
-Since the core idea is to keep the unsupervised aspect to the learning, a link between the input image (polarimetric) and the desired output image (depth) is needed. In the case of colorimetry, the algorithms rely on the perspective geometry formulation. In other words, the approaches require visual features. 
-It is possible to use this space in the colorimetric space but it will be restricted due to the absence of color. On the positive side, there is a direct link between the acquisition of the sensor and the depth, this thanks to the specularity.
+Since the core idea is to keep the unsupervised aspect to the learning, a link between the input image (polarimetric) and the desired output image (depth) is needed. In the case of color imaging, the algorithms rely on the perspective geometry formulation. In other words, the approaches require visual features. 
+It is possible to use this space in the polarization imaging but it will be restricted due to the absence of color. On the positive side, there is a direct link between the acquisition of the sensor and the depth, this thanks to the specularity.
 
 \subsection{Normals to angle of polarization}
 
@@ -63,9 +63,9 @@ As  shown in  Figure  \ref{fig:found},  it  is  equally  possible  to  geometric
 	\label{fig:found}
 \end{figure}
 
-There is a definite relationship between $\alpha$ acquired and the plane normal. Provided that the surface is specular and reflects light, then a relation exists between the reference and the direction of the electric field $\vec{E}$ projection.
-From this follows the possibility of deducing the normal $\vec{n}$ to the specular surface (i.e. a high degree of polarization $\rho$) since $\vec{E}$ is perpendicular to it. This statement is valid if and only if the surface is specular, which ensures perpendicularity between the two directions mentioned above. Otherwise, there would be no definite angle between $\vec{E}$ and $\vec{n}$ and therefore the equation would be neither differentiable nor -factually- optimizable. 
-In order to guarantee the validity of the formulation, it is then necessary to discriminate using $\rho$ as a criterion since this acquired sensor parameter allows a quasi equivalence to the specularity measurement. 
+There is a definite relationship between $\alpha$ inferred from acquisition and the plane normal. Provided that the surface is specular, then a relation exists between the reference and the direction of the electric field $\vec{E}$ projection.
+From this follows the possibility of deducing the normal $\vec{n}$ to the specular surface (i.e. a high degree of polarization $\rho$) since $\vec{E}$ is perpendicular to it. This statement is valid if and only if the surface is specular, which ensures perpendicularity between the two directions mentioned above. Otherwise, there would be no definite angle between $\vec{E}$ and $\vec{n}$ and therefore a regularization equation based on this principle would be neither differentiable nor optimizable. 
+In order to guarantee the validity of the formulation, it is then necessary to discriminate using $\rho$ as a criterion since this parameter allows a quasi equivalence to the specularity measurement. 
 
 \section{Towards a unified polarization-based method for depth estimation}
 To infer a depth map from a single polarimetric image, we formulate a loss function supported by polarimetry-to-depth links. The accurate reconstruction is obtained by optimizing this function by a deep learning network in an unsupervised manner.
@@ -116,7 +116,7 @@ L_{\textrm{diff}} = \mu L_r + \lambda L_s,
 \end{equation}
 with $\lambda$ a scaling parameter set to $1e^{-3}$ and $\mu$ a binary mask defined in \cite{godard2019digging} taking occlusion and displacement of pixels along sequences into account.
 
-Now, by drawing inspiration from and generalizing the contribution in \cite{berger2017depth}, it is possible to include a third term into this loss to penalize poor reconstruction of reflective areas. By definition, polarization is defined by the orientation of the electric field. Consequently, it is possible to estimate the electric field as a function of a normal derived from a plane.
+Now, by drawing inspiration from and generalizing the contribution in \cite{berger2017depth}, it is possible to include a third term into this loss to penalize poor reconstruction of reflective areas. By definition, polarization is defined by the orientation of the electric field. Consequently, it is possible to estimate the electric field orientation as a function of a normal derived from a plane.
 
 \begin{figure}[]
 	\centering
@@ -171,14 +171,14 @@ where $\tau$ is a binary mask derived from $\rho$ such that:
 \tau(x) = \begin{cases} 1, & \mbox{ if } \rho(x) ~ \geq ~ 0.4\\
 0, & \mbox{ otherwise}\end{cases}.
 \end{equation}
-The polarimetric term $L_{\textrm{pol}}$ is taken into account only if the degree of polarization is relevant. Since, the relevance of both $\rho$ and $\alpha$ are correlated, this mask ensure for a legitimate electric field estimation.
+The polarimetric term $L_{\textrm{pol}}$ is taken into account only if the degree of polarization is relevant. Since, the relevance of both $\rho$ and $\alpha$ are correlated, this mask ensure for a legitimate electric field orientation estimation.
 The final loss $\Lambda$ is then just composed of reprojection error when the image area is unpolarized. Polarization components, when consistent, are taken into consideration and penalize the inaccurate reconstruction of specular surfaces.
 
 \subsection{Network architecture}
 
 Following \cite{godard2019digging}, the network has an encoder-decoder architecture (a UNet with a ResNet 50 layout as shown in the Figure~\ref{fig:net}). It takes as input three-channel images obtained by concatenation of the intensity $\iota$, the polarization angle $\alpha$ and the degree of polarization $\rho$.
-To overcome some inconsistencies related to the polarimetric modality and to consider exclusively areas with a minimum partial specularity, all values of lower than
-0.4 are eliminated. This is justified by the fact that diffuse surfaces corresponding to low degree of polarization lead to a difference of $\pi/2$ between $\alpha$ and the electric field $E$.
+To overcome some inconsistencies related to the polarimetric modality and to consider exclusively areas with a minimum partial specularity, all degree of polarization values of lower than
+0.4 are eliminated. This is justified by the fact that diffuse surfaces corresponding to low degree of polarization lead to a difference of $\pi/2$ between $\alpha$ and the electric field $\vec{E}$.
 When the disparity induced by the reprojection error is calculated, despite the accuracy of this calculation, the angular error will then tend towards $\pi/2$ leading the $L_{\textrm{pol}}$ function to tend towards infinity and thus causing exploding gradient problems.\\
 Similarly, a perfect $\rho$ is physically unobservable which justifies an upper threshold. To combine a scale-factor effect and a regularization relative to physical property, the values are clipped to a maximum of 0.8.
 
@@ -224,13 +224,13 @@ At last, the sky reconstruction accuracy $R_s$ is calculated as follows:
 R_s = 1 - \Big(\frac{\hat{y}_s}{y_s}\Big),
 \end{equation}
 where $y_s$ is the sum of the binary masked pixels considered as sky in the ground truth and $\hat{y}_s$ the corresponding area in the prediction. This calculation is performed on the disparity, and one order of magnitude error deviation is considered acceptable.
-It focuses on the ability of the network to accurately estimate the sky and not propagate an erroneous evaluation in such areas. It is noteworthy this kind of precision is usually neglected since the reconstruction precision of these areas is removed from the frequent metrics. Ordinarily, sky zones are filtered out of the metrics beforehand. In this contribution, these areas are also neglected while calculating Eigen et al.~\cite{eigen2014depth} metrics.
+It focuses on the ability of the network to accurately estimate the sky and not propagate an erroneous evaluation in such areas. It is noteworthy this kind of precision is usually neglected since the reconstruction precision of these areas is removed from the frequent metrics. Ordinarily, sky zones are filtered out of the metrics beforehand. In this evaluation, these areas are also neglected while calculating Eigen et al.~\cite{eigen2014depth} metrics.
 
 \renewcommand{\arraystretch}{1.1}
 \begin{table*}[!t]
 	\centering
 	\caption[P2D: Quantitative comparative results.]{Quantitative comparative results. For each network several metrics are computed neglecting the sky areas. In addition, we propose three different evaluations: on the \textit{Raw} images at the output of the network, on the \textit{Cropped} images to eliminate inconsistencies in the polarimetric network, and on the \textit{Specular} areas only.
-		G$_{\textrm{RGB}}$ corresponds to the network presented in \cite{godard2019digging} without fine-tuning, and G$_{\textrm{I}}$ corresponds to the same network with fine-tuning.
+		G$_{\textrm{RGB}}$ corresponds to the network presented in \cite{godard2019digging} without fine-tuning and taking $\{\iota,\iota,\iota\}$ the intensity concatenation as input, and G$_{\textrm{I}}$ corresponds to the same network with fine-tuning.
 		P2D corresponds to our method.}\label{resmet}
 	\center
 	\resizebox{\textwidth}{!}{%
@@ -245,7 +245,7 @@ It focuses on the ability of the network to accurately estimate the sky and not 
 	
 \end{table*}
 \subsubsection{Results and discussion} 
-Table~\ref{resmet} and Figure~\ref{fig:res} allow for a quantitative and qualitative evaluation of the results. In addition, the quantitative results affiliated with the benchmark of the different hyper-parameters is shown in Appendix \ref{AppendixD}.
+Table~\ref{resmet} and Figure~\ref{fig:res} allow for a quantitative and qualitative evaluation of the results. In addition, the quantitative results affiliated with the benchmark of the different hyper-parameters are shown in Appendix \ref{AppendixD}.
 Analyzing the images in Figure~\ref{fig:res}, we can observe various responses of the networks.
 First, using the method in \cite{godard2019digging} with raw images (G$_{\textrm{RGB}}$), the results seem satisfactory at first glance. However, some characteristics of the images are altered. For example, specular areas, car windshields or bus stops are incorrectly detected. To be specific, car windshields are over-segmented into several parts rather than being detected as unique planar surface.
 In addition, the distance to reflective road lines is often under-estimated and farthest objects are ignored.
@@ -270,7 +270,7 @@ Nevertheless, the reconstruction is close enough to the ground truth which also 
 When the network is trained end-to-end with polarimetric intensity images, the global impact of polarization is reduced but brings many significant constraints. Despite an accurate estimation of some areas like planar surfaces on cars and long distance objects (see row G$_I$ in Figure~\ref{fig:res}), others areas are subject to some aberrations mainly on the reflective lines and polarized contours. This behaviour produces a direct impact on the network estimations.
 Hence, the addition of polarization-specific terms is necessary to improve the estimation of polarized areas.
 
-When employing all the polarimetric information ($\iota$, $\rho$ and $\alpha$) in our P2D network, we can observe a accurater estimation of specular areas as well as sufficient reconstruction of diffuse areas.\\
+When employing all the polarimetric information ($\iota$, $\rho$ and $\alpha$) in our P2D network, we can observe a more accurate estimation of specular areas as well as sufficient reconstruction of diffuse areas.\\
 We can however see that the results at limited distances, as shown in the P2D row of Figure~\ref{fig:res}, are occasionally incorrect.
 This is due to the fact polarimetric information varies according to the light and its reflection angle. Therefore, the position of the camera is primarily responsible for these erroneous estimates.
 Indeed, as explained earlier in the Datasets section, the images of the evaluation subsets were acquired with different camera poses. Consequently, the information from the images differs from the training set case leading the network to fail in estimating depth values at close distances. 
@@ -294,10 +294,10 @@ Ultimately, to highlight the depth map reliability, sky reconstruction accuracy 
 		\end{tabular}
 	\end{table}
 \end{center}
-This specific metric has been computed since many evaluation metrics neglect such aspect which, however, could be informative, especially if one uses such an algorithm for navigation. This ratio reveals P2D's ability to reconstruct slightly more than half of the sky correctly. It permits to demonstrate polarimetry to be favorable also for such estimation.
+This specific metric has been computed since many evaluation metrics neglect such aspect which, however, could be informative, especially if one uses such an algorithm for navigation. This ratio reveals P2D's ability to reconstruct slightly more than half of the sky correctly. It permits to demonstrate polarization imaging to be favorable also for such estimation.
 
 
-\section{Polarization and colorimetry fusion for accurate depth estimation: a theory}
+\section{Polarization and colorization fusion for accurate depth estimation: a proof of concept}
 
 Despite the innovative approach proposed in the previous section, it is notable that in the framework set, the problem is brought as an end-to-end learning problem.
 That is, it is necessary to reconstruct an image, starting only from the polarimetric priors and without further information from other modalities.
@@ -307,29 +307,29 @@ In brief, the joint learning of the perspective geometry and the polarization ge
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.8\linewidth]{Figures/Fusion/polafail}
-	\caption[Case of estimation failure using P2D comparing to Monodepth v2.]{Case of estimation failure using P2D comparing to Monodepth v2. Left shows P2D estimation on polarimetric image. Right shows Monodepth v2 estimation on RGB similar image. Source images observe a car and both images were taken at the same time and under a colorimetry-favorable condition.}
+	\caption[Case of estimation failure using P2D comparing to Monodepth v2.]{Case of estimation failure using P2D comparing to Monodepth v2. Left shows P2D estimation on polarimetric image. Right shows Monodepth v2 estimation on RGB similar image. Source images observe a car and both images were taken at the same time and under a color-favorable condition.}
 	\label{fig:polafail}
 \end{figure}
 
 
-On the other hand, some colorimetry-based methods have been approved and are robust to many events. Although these approaches are directly related to the features present in the image, their learning with the help of massive databases allows strong abstraction capabilities.
+On the other hand, some color-based methods have been approved and are robust to many events. Although these approaches are directly related to the features present in the image, their learning with the help of massive databases allows strong abstraction capabilities.
 
-The two principles contain contradictions but seem robust, hence, we propose to investigate the possibilities of merging the performances. As follows, the problem is no longer depth map estimation from polarization but a refinement of a map estimated from colorimetry using polarization.
+The two principles contain contradictions but seem robust, hence, we propose to investigate the possibilities of merging the performances. As follows, the problem is no longer depth map estimation from polarization but a refinement of a map estimated from color images using polarization.
 
 \subsection{Estimating the appropriate fusion method}
 
 There are multiple methods of merging. However, a small population of approaches allow multimodal image fusion, especially when one is physics-based.
 
-We propose estimating the different possibilities of fusion of polarization and colorimetry. Thus, it will be possible to deduce which processes are applicable to theoretically obtain satisfactory results and especially to address the problem of depth map refinement.
+We propose estimating the different possibilities of fusion of polarization and colorization. Thus, it will be possible to deduce which processes are applicable to theoretically obtain satisfactory results and especially to address the problem of depth map refinement.
 
 \subsubsection{Early fusion}
 
 Early fusion is a very common process since it is simple to implement. 
 It basically consists of the image concatenation prior to the network. This technique requires perfectly aligned images and is frequently associated with 2.5D. Indeed, the RGB+D modality is extremely suitable since this information is complementary and can be aligned to the nearest pixel. 
 Preliminary approaches like FuseNet \cite{hazirbas2016fusenet} or MVCNet \cite{ma2017multi} have proposed segmentation methods using early fusion. This kind of approach would be completely adaptable to a self-supervised depth learning problem by adapting the loss function.
-A method close to our topic is RTFNet \cite{sun2019rtfnet} which proposes a semantic segmentation from a fusion of RGB and thermal image. This contribution highlights that it is possible to merge via this process images in two different spaces and especially colorimetry and a physics-based image.
+A method close to our topic is RTFNet \cite{sun2019rtfnet} which proposes a semantic segmentation from a fusion of RGB and thermal image. This contribution highlights that it is possible to merge via this process images in two different spaces and especially color-based and a physics-based image.
 
-It is nevertheless remarkable an overwhelming majority of the techniques are based on fusion applied to segmentation, although this is only an adaptation of the objective function to encounter a problem of depth estimation.
+It has to be highlighted that a majority ofof the techniques are based on fusion applied to segmentation, although this is only an adaptation of the objective function to encounter a problem of depth estimation.
 
 
 To assess whether this process is accessible to RGB polarimetric fusion, it is necessary to estimate the prerequisites for using such a method. The main idea is based on the concept of modality complementarity. Unfortunately, polarization and colorimetry share mutual information which would imply redundancies. It would indeed be possible to perform ablations to eliminate these redundancies or perform a thoughtful concatenation of the images. Thus, it would be possible to obtain a five-channel image composed of the three components of the RGB and the two complementary information of polarization, namely the angle and the degree of polarization. 
@@ -383,17 +383,17 @@ with $C$ the the weight matrix, usually called dictionary in this field, and $\l
 This kind of loss can allow for each modality to accurately describe the initial information. But in our case, the goal is to find a differentiable space allowing to discriminate and separate the polarimetric information from the shared information. Thus, this kind of context can be delimited as follows:
 
 \begin{equation}
-	y^p_p = y^p - y^r \quad with y^p = y^p_m + y^p_p,
+	y^p_p = y^p - y^r \quad with \quad y^p = y^p_m + y^p_p,
 \end{equation}
 
-with $y^p$ and $y^r$ being respectively the feature vector from polarization and RGB image. Also, the indices $m$ and $p$ denotes for mutual and polarization.
+with $y^p$ and $y^r$ being respectively the feature vector from polarization and RGB image. Also, the indices $m$ and $p$ denotes for mutual and polarization information.
 Following this framework, it is possible to deduce two peculiar functions and more generally a joint loss allowing to reach this objective.
 
 \begin{equation}
 	\gamma = \Lambda_p + \Lambda_r + ||C_ry_r - ^{\{\iota\}}C_py_p ||^2_2
 \end{equation}
 
-with indiced $\Lambda$ a modality related sparse coding loss fuction such that \mbox{$\Lambda_p = \frac{1}{2} || X_p - C_py_p ||^2_2 + \lambda ||y_p||_1$}. In this formulation $^{\{\iota\}}C_py_p$ represents the polarization intensity $\iota$ related reconstruction. In such way, the polarization parameters are discrimated and the function ensure for an accurate reconstruction of both mutual information shared through RGB and polarimetry.
+with indiced $\Lambda$ a modality related sparse coding loss fuction such that\\ \mbox{$\Lambda_p = \frac{1}{2} || X_p - C_py_p ||^2_2 + \lambda ||y_p||_1$}. In this formulation $^{\{\iota\}}C_py_p$ represents the polarization intensity $\iota$ related reconstruction. In such way, the polarization parameters are discrimated and the function ensures for an accurate reconstruction of both mutual information shared through RGB and polarimetry.
 
 Then, with an ensured differentiable space between intensity and polarimetric parameters, it is possible to build an architecture allowing to take advantage of the supplementary information brought by the multi-modality without involving redundancy. Through this, the network can theoretically not be influenced as before by optimizing everything equally at once. The loss of photometric reconstruction as well as the estimation via PoseCNN can be operated exclusively on the mutual information while the polarimetry-related operations can be computed only with the polarimetric information.
 This kind of approach additionally allows to make clear connections between the input and output of the pipeline by making the spaces separable and distinct.
@@ -425,7 +425,7 @@ As shown in Figure \ref{fig:late1}, a preliminary per-modality depth estimation 
 \end{figure}
 
 
-A first pipeline can consider the colorimetric modality by adopting the strategy of Godard et al. with its formulation of photometric error, smoothing and taking into account the occlusion and parallax parameters.
+A first pipeline can consider the color modality by adopting the strategy of Godard et al. with its formulation of photometric error, smoothing and taking into account the occlusion and parallax parameters.
 A second pipeline addressing the polarization could only regularize the normals to match the polarization angle. This strategy would allow obtaining sparse images but loaded with information where the polarization can be impactful. Discrimination with respect to the degree of polarization is then valid to consider only specular surfaces and to verify the equations relating normals and $\alpha$. This approach would be a P2D relieved of the constraints of photometry-based perspective geometry.
 
 At the end of these two pipelines, two depth maps would be obtained, one built using the perspective geometry formulation and the other verifying the validity with respect to polarimetry.
@@ -439,7 +439,7 @@ Finally, these two maps could be aggregated using a fusion network based on raw 
 \end{figure}
 
 This uncertainty measure must integrate the errors inherent to the modalities or the cross modality alignment.
-We rectify the depth map according to the different errors that are available such as $\varepsilon_o$ the alignment error and $\rho$ the degree of polarization. We justify this rectification by contextualizing the disparate impact of those parameters. While RGB image has been rectified, polarization cannot be affected by any transformation. Ultimately, the alignment error is impacted and due to the polarimetric modality. As for propagating the degree of polarization on the radiometry-based estimation, this is necessarily due to the lack of modality knowledge. Colorimetry based information do not observe any specularity awareness except by saturation. In highly specular area, it is a benefit to acknowledge such high impact data. In addition, most colorimetry-based monocular depth estimation approach are known to highly perform in textured/features regions and as contrary, to fail in different other cases (the saturation being one of those cases ). In accordance, we scale inferred estimation by the inverse of $\rho$ to manage those specific uncertainty as follows:
+We rectify the depth map according to the different errors that are available such as $\varepsilon_o$ the alignment error and $\rho$ the degree of polarization. While RGB image has been rectified, polarization cannot be affected by any transformation. Ultimately, the alignment error is impacted and due to the polarization modality. As for propagating the degree of polarization on the color-based estimation, this is necessarily due to the lack of modality knowledge. Color-based information do not observe any specularity awareness except by saturation. In highly specular area, it is a benefit to acknowledge such high impact data. In addition, most colorization-based monocular depth estimation approach are known to highly perform in textured/features regions and as contrary, to fail in different other cases (the saturation being one of those cases ). In accordance, we scale inferred estimation by the inverse of $\rho$ to manage those specific uncertainty as follows:
 \begin{equation}
 \begin{cases}  
 \mathcal{D}_{\mathcal{T}}^{\varepsilon_o} =  \mathcal{D}_{\mathcal{T}} \times \rho\\[8pt] 
@@ -469,7 +469,7 @@ We propose a concept based on a Bayesian Neural Network (BNN) \cite{denker1990tr
 Our singular goal is to refine a depth map and epistemic uncertainty modeling seems an excellent candidate to optimize in this direction. 
 The overall idea would be to minimize the cross-modality uncertainty jointly with the epistemic uncertainty.
 This approach is almost necessary because there is no conspicuous domain where one can regularize two disparity measures. Such a method allows to have a differentiation and force the use of information coming from both modalities by the availability of $\widetilde{\mathcal{U}_{\mathcal{T}}^{\mathcal{S}}}$.
-Finally, as shown in Figure, it is possible to schematize this unsupervised architecture taking advantage of relative uncertainties but also of a global uncertainty modeled by the BNN. 
+Finally, as shown in Figure \ref{fig:late2}, it is possible to schematize this unsupervised architecture taking advantage of relative uncertainties but also of a global uncertainty modeled by the BNN. 
 
 In conclusion, this complex architecture would theoretically allow refining a depth map by taking advantage of both modality information and a complex uncertainty modelization through a BNN. On the other hand, this kind of setup requires a massive amount of data but especially a hardware architecture supporting an immense load of calculations. This constraint is directly attributed to the use of Bayesian neural network, simulating a large number of weights through Gaussian distributions.
 To reduce this charge and to make it feasible in the short term, a cascade modeling that would benefit from prior estimates could be advantageous.
@@ -504,7 +504,7 @@ One can estimate a surface normal map from a depth map through oriented derivati
 	\end{bmatrix}.
 \end{equation}
 
-As shown in Figure \ref{fig:normalsfromcube}, from a depth map, one can compute the according normals field.
+As shown in Figure \ref{fig:normalsfromcube}, from a depth map, one can compute the corresponding normals field.
 
 \begin{figure}[h]
 	\centering
@@ -532,7 +532,7 @@ Then, taking into account only specular surfaces and their related orientation u
 	L_{pol} = \rho A(\alpha + \frac{\pi}{2} , \Theta).
 \end{equation}
 
-Consequently, $L_{pol}$ represents a self-supervision-compatible error term considering both the polarimetric information and the initial estimate from the colorimetry. $\rho$ is adequately used to consider only the pixels where specularity is observed and the relation $\alpha$ to $\vec{n}$ is verified.
+Consequently, $L_{pol}$ represents a self-supervision-compatible error term considering both the polarimetric information and the initial estimate from the color image. $\rho$ is adequately used to consider only the pixels where specularity is observed and the relation $\alpha$ to $\vec{n}$ is verified.
 
 
 This solution, although the others are potentially viable, seems to be the most appropriate and above all can allow for theory-testing prior experiments without the need for a large-scale dataset.
@@ -554,17 +554,17 @@ Starting with a depth map estimate from Godard et al. \cite{godard2019digging}, 
 		\centering
 		\includegraphics[width=\linewidth]{Figures/Fusion/godnorm}
 	\end{subfigure}
-	\caption[Normals estimation from Monodepth v2 estimate on two different scenes.]{Normals estimation from Monodepth v2 estimate on two different scenes. Left column shows the depth image and right column the correspond computed normals.}
+	\caption[Normals estimation from Monodepth v2 estimate on two different scenes.]{Normals estimation from Monodepth v2 estimate on two different scenes. Left column shows the depth image and right column the corresponds computed normals.}
 	\label{fig:godnorm}
 \end{figure}
 
-As shown in Figure \ref{fig:godnorm}, the resulting orientations are discussable. Espacially in top row, normal vectors does not highlight properly the surfaces and tends to produce fictive shapes. \\
+As shown in Figure \ref{fig:godnorm}, the resulting orientations are discussable. Espacially in top row, normal vectors do not highlight properly the surfaces and tends to produce fictive shapes. \\
 Assuming the normals field optimal (considering bottom row), one can compute the correspond angles following equation \ref{ntoa}. A resulting grayscale image shown in Figure \ref{fig:tan} can be displayed where $\Theta\in\left[0,\pi\right]$.
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.8\linewidth]{Figures/Fusion/tan}
-	\caption[Angles computed from normals.]{Angles computed from normals compted following equation \ref{ntoa}.}
+	\caption[Angles computed from normals.]{Angles computed from normals following equation \ref{ntoa}.}
 	\label{fig:tan}
 \end{figure}
 
@@ -577,7 +577,7 @@ In addition, the aligned angle of polarization $\alpha$ used for regularizing th
 	\label{fig:angleofp}
 \end{figure}
 
-Subsequently employing the two previous informative images, one can estimate the error through equation \ref{regu}. $\rho$ is subsequently enforcing the computation on specular surfaces and reducing the impact of polarization characteristics to only the desired area. As shown in Figure \ref{fig:resim}, only few pixels are erronously estimated by the state-of-the-art colorimetry-based method. Consequently, this peculiar loss only focuses on these specific portions of the image that are specularity impacted.
+Subsequently employing the two previous informative images, one can estimate the error through equation \ref{regu}. $\rho$ is subsequently enforcing the computation on specular surfaces and reducing the impact of polarization characteristics to only the desired area. As shown in Figure \ref{fig:resim}, only few pixels are erronously estimated by the state-of-the-art colorization-based method. Consequently, this peculiar loss only focuses on these specific portions of the image that are specularity impacted.
 
 \begin{figure}[h]
 	\centering
@@ -590,7 +590,7 @@ To obtain a back propagation compatible error, the only missing element lie into
 
 Thanks to the limited number of impacted pixels due to $\rho$ filtering, the summation seems to represent the most ideal candidate avoiding vanishing gradient issues. 
 
-Ultimately, this technique while considering colorimetry only involve the training of a polarization related network. This strategy is subsequently valid since the announced problem statement requires such a behaviour. 
+Ultimately, this technique while considering color information only involve the training of a polarization related network. This strategy is subsequently valid since the announced problem statement requires such a behaviour. 
 
 \subsection{Discussion and conclusion}
 

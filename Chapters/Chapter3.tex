@@ -5,7 +5,7 @@
 \label{Chapter3} % For referencing the chapter elsewhere, use \ref{Chapter1} 
 
 
-This chapter is dedicated to the two main tools that will be widely used in this manuscript. To avoid redundancy and repetitive explanations, we propose defining Polarization in Section \ref{Polar_explain} and Deep Leaning in Section \ref{DL_explain}. Thus, when general principles are needed for the understanding of the work, this chapter will serve as a reference.
+This chapter is dedicated to the two main tools that will be widely used in this manuscript. To avoid redundancy and repetitive explanations, we propose defining Polarization in Section \ref{Polar_explain} and Deep Learning in Section \ref{DL_explain}. Thus, when general principles are needed for the understanding of the work, this chapter will serve as a reference.
 %----------------------------------------------------------------------------------------
 
 % Define some commands to keep the formatting separated from the content 
@@ -15,16 +15,16 @@ This chapter is dedicated to the two main tools that will be widely used in this
 
 \section{Polarimetry}\label{Polar_explain}
 
-This section will be dedicated to polarimetry and will provide a general introduction to the field. We propose deconstructing this modality by defining it in three aspects. First, \ref{gdpola} introduce the general concept of polarization. Then, \ref{particularsensor} will take the sensor angle to discuss the properties specific to polarimetric imaging. Finally, in \ref{exploitdata}, we will discuss the usual exploitation methods of this particular data.
+This section will be dedicated to polarimetry and will provide a general introduction to the field. We propose to describe this modality by defining it in three aspects. First, Section \ref{gdpola} introduce the general concept of polarization. Then, Section \ref{particularsensor} will take the sensor angle to discuss the properties specific to polarimetric imaging. Finally, in Section \ref{exploitdata}, we will discuss the usual exploitation methods of this particular data.
 
 
 \subsection{General Principles}\label{gdpola}
 
-Polarimetry \cite{collett2005field} is a particular modality that acquires the polarization state of objects in a scene. Briefly, polarization is a property that, in the case of image acquisition, concerns light. It is composed of two perpendicular fields called electric field $\vec{E}$ and magnetic field $\vec{B}$ that oscillate along the wave reflected to the sensor. A polarization wave is said to be elliptical but is ordinarily considered as the sum of linear and circular components.
+Polarimetry \cite{collett2005field} is a particular modality that acquires the polarization state of objects in a scene. Briefly, polarization is a property that, in the case of image acquisition, concerns light. It is composed of two perpendicular fields called electric field $\vec{E}$ and magnetic field $\vec{B}$ that oscillate along the wave reflected to the sensor. A polarized wave is said to be elliptical but is ordinarily considered as the sum of linear and circular components.
 In general, in mobile acquisition systems, only the linear polarization is acquired since the circular polarization requires the mounting of a quarter wave plate.
 It is possible to observe polarized light in nature with sunlight or observation of multiple non-natural light sources. A notable property of polarization is that if a light wave hits a surface and is reflected, then the wave becomes partially polarized. This property is particularly important since, unlike conventional modalities that focus on colors or textures, polarimetry focuses on light behavior in relation to surfaces.
 
-Consequently, it is possible to affirm polarimetry allows the acquisition of changes in the state of light\cite{wolff1995polarization}. In addition, many principles are inspired or derived from Fresnel's equations \cite{fresnel1868oeuvres}. This link is attributed to the close relationship between polarization and reflection of light. Therefore, it is notable that polarization has the potential capacity to infer, by light behavior, the properties of surfaces (i.e. refractive index, surface normals, etc.).
+Consequently, it is possible to affirm that polarimetry allows the acquisition of changes in the state of light\cite{wolff1995polarization}. In addition, many principles are inspired or derived from Fresnel's equations \cite{fresnel1868oeuvres}. This link is attributed to the close relationship between polarization and reflection of light. Therefore, it is notable that polarization has the potential capacity to infer, by light behavior, the properties of surfaces (i.e. refractive index, surface normals, etc.).
 
 
 
@@ -203,7 +203,7 @@ These different angles allow discriminating the components of the light and thus
 	\end{scope}
 	
 	\end{tikzpicture}
-	\caption{Illustration of polarizer filtration.}\label{extract}
+	\caption{Illustration of unpolarized light filtration through $45\deg$ linear polarizer.}\label{extract}
 \end{figure}
 
 
@@ -217,7 +217,7 @@ Due to this sensor architecture, each pixel is independent since the information
 	\label{fig:polaexplain}
 \end{figure}
 
-Subsequently, it is possible to identify polarized areas using this pixelization phenomenon. Indeed, when an object reflects the light, the grid appears since the intensities per polarizer are peculiar (consequence of the filtering).
+Subsequently, it is possible to identify polarized areas using this pixelization phenomenon. Indeed, when an object reflects the light, the grid appears since the intensities per polarizer are different (consequence of the filtering).
 
 
 \subsection{Exploiting the Data}\label{exploitdata}
@@ -225,9 +225,8 @@ Subsequently, it is possible to identify polarized areas using this pixelization
 
 As previously stated, the images are sparse because of the sensor architecture. When the images are acquired with a low resolution sensor then this can cause a significant problem since the image size is divided by two. In addition, on a low resolution, the shapes can be changed because of the correspondence between the real world and image space. Ultimately, it is necessary that the polarizer images are dense and aligned otherwise the polarimetric information is incomplete.
 
-To overcome this dimensionality problem, many approaches have been developed that allow the interpolation of polarimetric intensities. Principally used, Ratliff et al. \cite{ratliff2009interpolation} proposes to use a bilinear interpolation directly on the intensity images. More recently, more complex strategies have investigated interpolation using the Newton polynomial \cite{li2019demosaicking} or the use of machine learning models based on sparse representation \cite{zhang2018sparse}.
-Despite the complexity of these algorithms, the best way to overcome this problem is to operate a high-resolution camera with smaller pixels and, above all, a more adequate real-world correspondence to image space.
-The density of the polarization images is crucial to calculate the Stokes vector or polarization parameters.
+To overcome this dimensionality problem, many approaches have been developed that allow the interpolation of polarimetric intensities. Principally used, Ratliff et al. \cite{ratliff2009interpolation} proposes to use a bilinear interpolation directly on the intensity images. More recently, more complex interpolation startegies have been investigated using the Newton polynomial \cite{li2019demosaicking} or the use of machine learning models based on sparse representation \cite{zhang2018sparse}.
+Despite the complexity of these algorithms, the best way to overcome the image sparsity problem is to operate a high-resolution camera with smaller pixels and, above all, a more adequate real-world correspondence to image space.
 The density of the polarization images is crucial to calculate the Stokes parameters \cite{stokes1851composition}.
 These parameters have been designed to describe the polarization of light through a descriptive vector such as:
 
@@ -235,16 +234,16 @@ These parameters have been designed to describe the polarization of light throug
 S = \begin{pmatrix}S_0\\S_1\\S_2\\S_3\end{pmatrix} = \begin{pmatrix}P_H + P_V\\ P_H - P_V\\ P_{45} - P_{135} \\ P_R - P_L\end{pmatrix} = \begin{pmatrix}P_0 + P_{90}\\ P_0 - P_{90}\\ P_{45} - P_{135} \\ 0\end{pmatrix} = \begin{pmatrix}I\\ Q\\ U \\ V\end{pmatrix},
 \end{equation}
 
-where $P_H$ and $P_V$ are respectively the horizontal and vertical polarization. Since we do not acquire circular polarization, $V$ and therefore $s_3$ remain null. $I$ represents the total acquired intensity whereas $U$ and $V$ are part of $L = Q + iU$ the straight polarization intensity, being a complex number that accounts for the tilt of the polarization direction $\theta$.
+where $P_H$ and $P_V$ are respectively the horizontal and vertical polarization. Since we do not acquire circular polarization, $V$ and therefore $s_3$ remain null. $I$ represents the total acquired intensity whereas $U$ and $Q$ are part of $L = Q + iU$ the straight polarization intensity, being a complex number that accounts for the tilt of the polarization direction $\theta$.
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.3\linewidth]{Figures/Preliminary/pointcare}
-	\caption{Spherical representation of Stokes vector on Pointcar\'e Sphere.}
+	\caption{Spherical representation of Stokes vector on Poincar\'e Sphere.}
 	\label{fig:pointcare}
 \end{figure}
 
-As stated in \ref{gdpola}, the polarization is said elliptical. Nevertheless, common representation projects the vector onto Poincar\'e sphere. Consequently, Stokes parameters can also be defined through 3 spherical coordinates $I_p$, $2\psi$ and $2\chi$ shown in Figure \ref{fig:pointcare}. Equally, the parameters are:
+As stated in Section \ref{gdpola}, the polarization is said elliptical. Nevertheless, common representation projects the vector onto Poincar\'e sphere. Consequently, Stokes parameters can also be defined through 3 spherical coordinates $I_p$, $2\psi$ and $2\chi$ shown in Figure \ref{fig:pointcare}. Equally, the parameters are:
 
 \begin{equation}
 	\begin{cases}
@@ -255,7 +254,7 @@ As stated in \ref{gdpola}, the polarization is said elliptical. Nevertheless, co
 	\end{cases},
 \end{equation}
 
-where $I_p$ is the intensity of the beam, and $\rho$ the degree of polarization. $\psi$ and $\xi$ are defining factor for an ellipse being $\pi$ and $\frac{\pi}{2}$ invariant.
+where $I_p$ is the intensity of the beam, $\psi$ and $\xi$ are defining factor for an ellipse being $\pi$ and $\frac{\pi}{2}$ invariant.
 Consequently, one can define the intensity $\iota$, the angle of polarization $\alpha$ as well as the degree of polarization $\rho$ following (with no circular polarization acquired): 
 
 \begin{equation}
@@ -266,13 +265,13 @@ Consequently, one can define the intensity $\iota$, the angle of polarization $\
 \end{cases}.
 \end{equation}
 
-The degree and angle of polarization are two very descriptive characteristics of polarization. $\rho$ is analogous to the polarization strenght and belongs to $\left[0,1\right]$. This parameter quantify the polarization light in a wave. Therefore, a completly specular surface will record $\rho = 1$.
+The degree $\rho$ and angle $\alpha$ of polarization are two very descriptive characteristics of polarization. $\rho$ is analogous to the polarization strength and belongs to $\left[0,1\right]$. This parameter quantify the polarization light in a wave. Therefore, a completly specular wave will record $\rho = 1$.
 
 $\alpha \in \left[\frac{-\pi}{2}, \frac{\pi}{2}\right]$ is the angle of the electric field $\vec{E}$ projected on the image plane. In other words, the polarization angle corresponds to the orientation of the polarization with regard to the incident plane.
 
 \subsection{Summary}
 
-This section reviews the fundamental principles of polarimetry. It showed how this modality is particular and requires a singular treatment. In the same way, it is possible to realize this information can be very useful for certain domains. Indeed, we have first stated the particularities of the acquisition of the polarization state of objects. This allowed us to establish a direct link between the surface and the light emitted by it. Next, we described the functioning of the sensors and their limits. To conclude, we have sensitized on the use of raw images to cause them more generally exploitable. This brief overview has, in addition to introducing the subject and establishing it, justified in large part the use of this particular information in our work.
+This section review the fundamental principles of polarization imaging. It showed how this modality is particular and requires a singular processing. In the same way, it is possible to realize that this information can be very useful for certain domains. Indeed, we have first stated the particularities of the acquisition of the polarization state of objects. This allowed us to establish a direct link between the surface and the light reflected by it. Next, we described the functioning of the sensors and their limits. To conclude, we have described general process making raw polarimetric images exploitable. This brief overview has, in addition to introducing the subject and establishing it, justified in large part the use of this particular information in our work.
 
 
 
@@ -282,11 +281,11 @@ This section reviews the fundamental principles of polarimetry. It showed how th
 
 This section will be dedicated to the main notions related to Deep Learning. The recent advances in the field of learning and the increase in computing power have allowed this sub-branch of machine learning to emerge. Moreover, the availability of data, which is crucial for this kind of greedy algorithm, has allowed to guarantee a certain viability to these models. All in all, DL has become an inner part of the computer vision field by imposing itself as a powerful processing core for many approaches.
 
-We propose detailing this area in several parts for reference throughout this manuscript. Starting with the general notions, we will describe the three basics in Section 1, namely data, network, loss and training.
-These generalities will then allow in Section 2 to deepen some key concepts for this thesis.
+We propose detailing this area in several parts for reference throughout this manuscript. Starting with the general notions, we will describe the three basics in Section \ref{basics}, namely data, network, loss and training.
+These generalities will then allow in Section \ref{specnot} to deepen some key concepts for this thesis.
 
-\subsection{Basics}
-We propose an overview of the field of Deep Learning using the three essentials of the field.
+\subsection{Basics}\label{basics}
+We propose a brief insight in the field of Deep Learning by defining the three essentials of the domain.
 
 \subsubsection{Data}
 

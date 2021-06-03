@@ -1,0 +1,106 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\babel@toc {english}{}
+\contentsline {chapter}{Declaration of Authorship}{iii}{section*.1}%
+\contentsline {chapter}{Abstract}{v}{section*.2}%
+\contentsline {chapter}{Acknowledgements}{vii}{section*.3}%
+\contentsline {chapter}{List of Figures}{xii}{chapter*.4}%
+\contentsline {chapter}{List of Tables}{xv}{chapter*.5}%
+\contentsline {chapter}{List of Abbreviations}{xviii}{chapter*.6}%
+\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.9}%
+\contentsline {section}{\numberline {1.1}Context and Motivation}{1}{section.10}%
+\contentsline {section}{\numberline {1.2}Scope and Challenges}{3}{section.11}%
+\contentsline {subsection}{\numberline {1.2.1}Pixel-wise semantic segmentation}{4}{subsection.12}%
+\contentsline {subsection}{\numberline {1.2.2}Monocular depth inference}{4}{subsection.13}%
+\contentsline {section}{\numberline {1.3}Contributions}{5}{section.14}%
+\contentsline {subsection}{\numberline {1.3.1}Peer-review publications}{5}{subsection.15}%
+\contentsline {subsection}{\numberline {1.3.2}Open source softwares / datasets}{8}{subsection.16}%
+\contentsline {section}{\numberline {1.4}Organization}{9}{section.17}%
+\contentsline {chapter}{\numberline {2}Preliminary}{11}{chapter.18}%
+\contentsline {section}{\numberline {2.1}Polarimetry}{11}{section.19}%
+\contentsline {subsection}{\numberline {2.1.1}General Principles}{11}{subsection.20}%
+\contentsline {subsection}{\numberline {2.1.2}A Particular Sensor}{12}{subsection.21}%
+\contentsline {subsection}{\numberline {2.1.3}Exploiting the Data}{13}{subsection.25}%
+\contentsline {subsection}{\numberline {2.1.4}Summary}{15}{subsection.30}%
+\contentsline {section}{\numberline {2.2}Deep Learning}{15}{section.31}%
+\contentsline {subsection}{\numberline {2.2.1}Basics}{16}{subsection.32}%
+\contentsline {subsubsection}{\numberline {2.2.1.1}Data}{16}{subsubsection.33}%
+\contentsline {subsubsection}{\numberline {2.2.1.2}Network}{18}{subsubsection.35}%
+\contentsline {subsubsection}{\numberline {2.2.1.3}Loss}{18}{subsubsection.36}%
+\contentsline {subsection}{\numberline {2.2.2}Specific notions}{19}{subsection.37}%
+\contentsline {subsubsection}{\numberline {2.2.2.1}Pooling}{19}{subsubsection.38}%
+\contentsline {subsubsection}{\numberline {2.2.2.2}Atrous Spatial Pyramid Pooling (ASPP)}{21}{subsubsection.41}%
+\contentsline {subsubsection}{\numberline {2.2.2.3}Atrous Convolution}{21}{subsubsection.44}%
+\contentsline {subsection}{\numberline {2.2.3}Conclusion}{22}{subsection.45}%
+\contentsline {chapter}{\numberline {3}Litterature Review}{23}{chapter.46}%
+\contentsline {section}{\numberline {3.1}Deep Learning-based Semantic Segmentation}{23}{section.47}%
+\contentsline {subsection}{\numberline {3.1.1}Introduction}{23}{subsection.48}%
+\contentsline {subsection}{\numberline {3.1.2}Major backbones and networks: a comparative evaluation}{24}{subsection.49}%
+\contentsline {subsection}{\numberline {3.1.3}VGG}{26}{subsection.52}%
+\contentsline {subsubsection}{\numberline {3.1.3.1}FCN}{26}{subsubsection.54}%
+\contentsline {subsubsection}{\numberline {3.1.3.2}SegNet}{27}{subsubsection.55}%
+\contentsline {subsubsection}{\numberline {3.1.3.3}DilatedNet}{27}{subsubsection.56}%
+\contentsline {subsection}{\numberline {3.1.4}ResNet}{27}{subsection.57}%
+\contentsline {subsubsection}{\numberline {3.1.4.1}PSPNET}{28}{subsubsection.59}%
+\contentsline {subsubsection}{\numberline {3.1.4.2}DeepLab}{28}{subsubsection.60}%
+\contentsline {subsection}{\numberline {3.1.5}Conclusion and discussion}{29}{subsection.61}%
+\contentsline {section}{\numberline {3.2}Depth Estimation}{31}{section.62}%
+\contentsline {subsection}{\numberline {3.2.1}Laser-based imaging}{31}{subsection.63}%
+\contentsline {subsection}{\numberline {3.2.2}Multi-image methods}{32}{subsection.67}%
+\contentsline {subsubsection}{\numberline {3.2.2.1}Multiple camera systems}{32}{subsubsection.68}%
+\contentsline {subsubsection}{\numberline {3.2.2.2}Single camera systems}{35}{subsubsection.73}%
+\contentsline {subsection}{\numberline {3.2.3}Learning-based monocular depth estimation}{37}{subsection.76}%
+\contentsline {subsubsection}{\numberline {3.2.3.1}(Semi-)supervised learning}{37}{subsubsection.77}%
+\contentsline {subsubsection}{\numberline {3.2.3.2}Self-supervised learning}{40}{subsubsection.81}%
+\contentsline {chapter}{\numberline {4}Deep Polarization-Based Semantic Segmentation}{53}{chapter.96}%
+\contentsline {section}{\numberline {4.1}Introduction}{53}{section.97}%
+\contentsline {section}{\numberline {4.2}Modality-related constraints}{55}{section.98}%
+\contentsline {subsection}{\numberline {4.2.1}Formulation}{55}{subsection.100}%
+\contentsline {subsection}{\numberline {4.2.2}Image Representation}{56}{subsection.101}%
+\contentsline {subsection}{\numberline {4.2.3}Dataset}{59}{subsection.115}%
+\contentsline {subsubsection}{\numberline {4.2.3.1}Synchronization}{60}{subsubsection.117}%
+\contentsline {subsubsection}{\numberline {4.2.3.2}Multimodal Alignment}{61}{subsubsection.120}%
+\contentsline {section}{\numberline {4.3}Augmentation}{63}{section.129}%
+\contentsline {subsection}{\numberline {4.3.1}Rotation}{64}{subsection.130}%
+\contentsline {subsection}{\numberline {4.3.2}Symmetry}{66}{subsection.136}%
+\contentsline {subsection}{\numberline {4.3.3}Final procedure}{68}{subsection.140}%
+\contentsline {section}{\numberline {4.4}Network architectures}{69}{section.143}%
+\contentsline {subsection}{\numberline {4.4.1}SegNet}{69}{subsection.144}%
+\contentsline {subsection}{\numberline {4.4.2}DeepLab V3+}{70}{subsection.147}%
+\contentsline {section}{\numberline {4.5}Experiments}{70}{section.149}%
+\contentsline {subsection}{\numberline {4.5.1}Modality-based Comparison}{71}{subsection.150}%
+\contentsline {subsubsection}{\numberline {4.5.1.1}Results}{72}{subsubsection.152}%
+\contentsline {subsubsection}{\numberline {4.5.1.2}Discussion}{73}{subsubsection.155}%
+\contentsline {subsection}{\numberline {4.5.2}Augmentation-based Comparison}{74}{subsection.156}%
+\contentsline {subsubsection}{\numberline {4.5.2.1}Results}{75}{subsubsection.159}%
+\contentsline {subsubsection}{\numberline {4.5.2.2}Discussion}{76}{subsubsection.164}%
+\contentsline {section}{\numberline {4.6}Summary}{77}{section.165}%
+\contentsline {chapter}{\numberline {5}Deep Polarization-Based Monocular Depth Estimation}{79}{chapter.166}%
+\contentsline {section}{\numberline {5.1}Introduction}{80}{section.167}%
+\contentsline {section}{\numberline {5.2}Depth-to-polarization interconnections}{82}{section.168}%
+\contentsline {subsection}{\numberline {5.2.1}Normals to angle of polarization}{82}{subsection.169}%
+\contentsline {section}{\numberline {5.3}Towards a unified polarization-based method for depth estimation}{83}{section.172}%
+\contentsline {subsection}{\numberline {5.3.1}Defining the loss}{83}{subsection.173}%
+\contentsline {subsubsection}{\numberline {5.3.1.1}Prior polarimetric reconstruction error}{83}{subsubsection.174}%
+\contentsline {subsubsection}{\numberline {5.3.1.2}Constraining the loss}{84}{subsubsection.175}%
+\contentsline {subsection}{\numberline {5.3.2}Network architecture}{87}{subsection.188}%
+\contentsline {subsection}{\numberline {5.3.3}Experiments}{88}{subsection.190}%
+\contentsline {subsubsection}{\numberline {5.3.3.1}Implementation details}{88}{subsubsection.191}%
+\contentsline {subsubsection}{\numberline {5.3.3.2}Results and discussion}{90}{subsubsection.194}%
+\contentsline {section}{\numberline {5.4}Polarization and colorization fusion for accurate depth estimation: a proof of concept}{93}{section.197}%
+\contentsline {subsection}{\numberline {5.4.1}Estimating the appropriate fusion method}{94}{subsection.199}%
+\contentsline {subsubsection}{\numberline {5.4.1.1}Early fusion}{94}{subsubsection.200}%
+\contentsline {subsubsection}{\numberline {5.4.1.2}Latent space fusion}{95}{subsubsection.202}%
+\contentsline {subsubsection}{\numberline {5.4.1.3}Late fusion}{98}{subsubsection.207}%
+\contentsline {subsubsection}{\numberline {5.4.1.4}Cascaded approach}{101}{subsubsection.213}%
+\contentsline {subsection}{\numberline {5.4.2}Prior experiments}{102}{subsection.220}%
+\contentsline {subsection}{\numberline {5.4.3}Discussion and conclusion}{104}{subsection.225}%
+\contentsline {section}{\numberline {5.5}Summary}{105}{section.226}%
+\contentsline {chapter}{\numberline {6}Conclusion, Perspectives and Future Work}{107}{chapter.227}%
+\contentsline {section}{\numberline {6.1}Conclusion}{107}{section.228}%
+\contentsline {section}{\numberline {6.2}Perspective for polarization in modern computer vision}{108}{section.229}%
+\contentsline {section}{\numberline {6.3}Future Work}{109}{section.230}%
+\contentsline {chapter}{\numberline {A}Table of Cameras Characteristics}{111}{appendix.231}%
+\contentsline {chapter}{\numberline {B}Segmentation Metrics}{113}{appendix.233}%
+\contentsline {chapter}{\numberline {C}P2D - Hyper-parameters benchmark}{115}{appendix.238}%
+\contentsline {chapter}{\numberline {D}Quantitative Evaluation - Hyper-paremeters search}{117}{appendix.240}%
+\contentsline {chapter}{Bibliography}{119}{appendix*.244}%

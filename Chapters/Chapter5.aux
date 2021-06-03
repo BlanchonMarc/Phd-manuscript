@@ -1,0 +1,229 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\@writefile{toc}{\contentsline {chapter}{\numberline {5}Deep Polarization-Based Monocular Depth Estimation}{79}{chapter.166}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\newlabel{Chapter5}{{5}{79}{Deep Polarization-Based Monocular Depth Estimation}{chapter.166}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.1}Introduction}{80}{section.167}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5.2}Depth-to-polarization interconnections}{82}{section.168}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2.1}Normals to angle of polarization}{82}{subsection.169}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.1}{\ignorespaces Illustration of imbrication of polarimetry peculiar and perspective geometry. Visual representation of angle of polarization measurement.\relax }}{83}{figure.caption.171}\protected@file@percent }
+\newlabel{fig:found}{{5.1}{83}{Illustration of imbrication of polarimetry peculiar and perspective geometry. Visual representation of angle of polarization measurement.\relax }{figure.caption.171}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.3}Towards a unified polarization-based method for depth estimation}{83}{section.172}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.1}Defining the loss}{83}{subsection.173}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.3.1.1}Prior polarimetric reconstruction error}{83}{subsubsection.174}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.3.1.2}Constraining the loss}{84}{subsubsection.175}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.2}{\ignorespaces Illustration of the electric field estimation method.\relax }}{85}{figure.caption.181}\protected@file@percent }
+\newlabel{fig:efromp}{{5.2}{85}{Illustration of the electric field estimation method.\relax }{figure.caption.181}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.3}{\ignorespaces Angular difference visual representation. Here, the reference of the angle of polarization is vertical.\relax }}{86}{figure.caption.184}\protected@file@percent }
+\newlabel{fig:cpol}{{5.3}{86}{Angular difference visual representation. Here, the reference of the angle of polarization is vertical.\relax }{figure.caption.184}{}}
+\newlabel{backpro}{{5.8}{86}{Constraining the loss}{equation.183}{}}
+\newlabel{LPol}{{5.9}{87}{Constraining the loss}{equation.185}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.2}Network architecture}{87}{subsection.188}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.4}{\ignorespaces Illustration of the network as well as the loss calculation strategy and its back propagation. Drawing inspiration from \cite {godard2019digging}, the depth estimation network is a UNet with a ResNet50 layout.\relax }}{88}{figure.caption.189}\protected@file@percent }
+\newlabel{fig:net}{{5.4}{88}{Illustration of the network as well as the loss calculation strategy and its back propagation. Drawing inspiration from \cite {godard2019digging}, the depth estimation network is a UNet with a ResNet50 layout.\relax }{figure.caption.189}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.3}Experiments}{88}{subsection.190}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.3.3.1}Implementation details}{88}{subsubsection.191}\protected@file@percent }
+\newlabel{reconSky}{{5.12}{89}{Implementation details}{equation.192}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {5.1}{\ignorespaces P2D: Quantitative comparative results.}}{90}{table.caption.193}\protected@file@percent }
+\newlabel{resmet}{{5.1}{90}{P2D: Quantitative comparative results}{table.caption.193}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.3.3.2}Results and discussion}{90}{subsubsection.194}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.5}{\ignorespaces Illustration of results on five independent road scenes in mixed weather conditions.}}{91}{figure.caption.195}\protected@file@percent }
+\newlabel{fig:res}{{5.5}{91}{Illustration of results on five independent road scenes in mixed weather conditions}{figure.caption.195}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {5.2}{\ignorespaces Quantitative comparison of sky reconstruction accuracy.\relax }}{92}{table.caption.196}\protected@file@percent }
+\newlabel{Reconsky}{{5.2}{92}{Quantitative comparison of sky reconstruction accuracy.\relax }{table.caption.196}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.4}Polarization and colorization fusion for accurate depth estimation: a proof of concept}{93}{section.197}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.6}{\ignorespaces Case of estimation failure using P2D comparing to Monodepth v2.}}{93}{figure.caption.198}\protected@file@percent }
+\newlabel{fig:polafail}{{5.6}{93}{Case of estimation failure using P2D comparing to Monodepth v2}{figure.caption.198}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.1}Estimating the appropriate fusion method}{94}{subsection.199}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.4.1.1}Early fusion}{94}{subsubsection.200}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.7}{\ignorespaces Early Fusion architecture illustration.}}{95}{figure.caption.201}\protected@file@percent }
+\newlabel{fig:earlyf}{{5.7}{95}{Early Fusion architecture illustration}{figure.caption.201}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.4.1.2}Latent space fusion}{95}{subsubsection.202}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.8}{\ignorespaces Latent space Fusion architecture illustration.}}{96}{figure.caption.203}\protected@file@percent }
+\newlabel{fig:latents}{{5.8}{96}{Latent space Fusion architecture illustration}{figure.caption.203}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.4.1.3}Late fusion}{98}{subsubsection.207}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.9}{\ignorespaces Late Fusion architecture illustration. Prior Estimations.}}{98}{figure.caption.208}\protected@file@percent }
+\newlabel{fig:late1}{{5.9}{98}{Late Fusion architecture illustration. Prior Estimations}{figure.caption.208}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.10}{\ignorespaces Late Fusion architecture illustration. Late refinement.}}{99}{figure.caption.209}\protected@file@percent }
+\newlabel{fig:late2}{{5.10}{99}{Late Fusion architecture illustration. Late refinement}{figure.caption.209}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.4.1.4}Cascaded approach}{101}{subsubsection.213}\protected@file@percent }
+\newlabel{casc}{{5.4.1.4}{101}{Cascaded approach}{subsubsection.213}{}}
+\newlabel{normes}{{5.19}{101}{Cascaded approach}{equation.214}{}}
+\newlabel{normes2}{{5.20}{101}{Cascaded approach}{equation.215}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.11}{\ignorespaces Illustration of depth to normals through oriented derivatives.}}{101}{figure.caption.216}\protected@file@percent }
+\newlabel{fig:normalsfromcube}{{5.11}{101}{Illustration of depth to normals through oriented derivatives}{figure.caption.216}{}}
+\newlabel{ntoa}{{5.21}{102}{Cascaded approach}{equation.217}{}}
+\newlabel{regu}{{5.23}{102}{Cascaded approach}{equation.219}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.2}Prior experiments}{102}{subsection.220}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.12}{\ignorespaces Normals estimation from Monodepth v2 estimate on two different scenes.}}{103}{figure.caption.221}\protected@file@percent }
+\newlabel{fig:godnorm}{{5.12}{103}{Normals estimation from Monodepth v2 estimate on two different scenes}{figure.caption.221}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.13}{\ignorespaces Angles computed from normals.}}{103}{figure.caption.222}\protected@file@percent }
+\newlabel{fig:tan}{{5.13}{103}{Angles computed from normals}{figure.caption.222}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.14}{\ignorespaces Aligned angle of polarization.\relax }}{104}{figure.caption.223}\protected@file@percent }
+\newlabel{fig:angleofp}{{5.14}{104}{Aligned angle of polarization.\relax }{figure.caption.223}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.15}{\ignorespaces Resulting error image from normal angles comparison.}}{104}{figure.caption.224}\protected@file@percent }
+\newlabel{fig:resim}{{5.15}{104}{Resulting error image from normal angles comparison}{figure.caption.224}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.3}Discussion and conclusion}{104}{subsection.225}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5.5}Summary}{105}{section.226}\protected@file@percent }
+\@setckpt{Chapters/Chapter5}{
+\setcounter{page}{106}
+\setcounter{equation}{23}
+\setcounter{enumi}{0}
+\setcounter{enumii}{0}
+\setcounter{enumiii}{0}
+\setcounter{enumiv}{0}
+\setcounter{footnote}{0}
+\setcounter{mpfootnote}{0}
+\setcounter{part}{0}
+\setcounter{chapter}{5}
+\setcounter{section}{5}
+\setcounter{subsection}{0}
+\setcounter{subsubsection}{0}
+\setcounter{paragraph}{0}
+\setcounter{subparagraph}{0}
+\setcounter{figure}{15}
+\setcounter{table}{2}
+\setcounter{LT@tables}{1}
+\setcounter{LT@chunks}{1}
+\setcounter{caption@flags}{0}
+\setcounter{continuedfloat}{0}
+\setcounter{subfigure}{0}
+\setcounter{subtable}{0}
+\setcounter{tabx@nest}{0}
+\setcounter{listtotal}{0}
+\setcounter{listcount}{0}
+\setcounter{liststart}{0}
+\setcounter{liststop}{0}
+\setcounter{citecount}{0}
+\setcounter{citetotal}{0}
+\setcounter{multicitecount}{0}
+\setcounter{multicitetotal}{0}
+\setcounter{instcount}{329}
+\setcounter{maxnames}{999}
+\setcounter{minnames}{3}
+\setcounter{maxitems}{3}
+\setcounter{minitems}{1}
+\setcounter{citecounter}{0}
+\setcounter{maxcitecounter}{0}
+\setcounter{savedcitecounter}{0}
+\setcounter{uniquelist}{0}
+\setcounter{uniquename}{0}
+\setcounter{refsection}{0}
+\setcounter{refsegment}{0}
+\setcounter{maxextratitle}{0}
+\setcounter{maxextratitleyear}{0}
+\setcounter{maxextraname}{3}
+\setcounter{maxextradate}{0}
+\setcounter{maxextraalpha}{0}
+\setcounter{abbrvpenalty}{50}
+\setcounter{highnamepenalty}{50}
+\setcounter{lownamepenalty}{25}
+\setcounter{maxparens}{3}
+\setcounter{parenlevel}{0}
+\setcounter{mincomprange}{10}
+\setcounter{maxcomprange}{100000}
+\setcounter{mincompwidth}{1}
+\setcounter{afterword}{0}
+\setcounter{savedafterword}{0}
+\setcounter{annotator}{0}
+\setcounter{savedannotator}{0}
+\setcounter{author}{0}
+\setcounter{savedauthor}{0}
+\setcounter{bookauthor}{0}
+\setcounter{savedbookauthor}{0}
+\setcounter{commentator}{0}
+\setcounter{savedcommentator}{0}
+\setcounter{editor}{0}
+\setcounter{savededitor}{0}
+\setcounter{editora}{0}
+\setcounter{savededitora}{0}
+\setcounter{editorb}{0}
+\setcounter{savededitorb}{0}
+\setcounter{editorc}{0}
+\setcounter{savededitorc}{0}
+\setcounter{foreword}{0}
+\setcounter{savedforeword}{0}
+\setcounter{holder}{0}
+\setcounter{savedholder}{0}
+\setcounter{introduction}{0}
+\setcounter{savedintroduction}{0}
+\setcounter{namea}{0}
+\setcounter{savednamea}{0}
+\setcounter{nameb}{0}
+\setcounter{savednameb}{0}
+\setcounter{namec}{0}
+\setcounter{savednamec}{0}
+\setcounter{translator}{0}
+\setcounter{savedtranslator}{0}
+\setcounter{shortauthor}{0}
+\setcounter{savedshortauthor}{0}
+\setcounter{shorteditor}{0}
+\setcounter{savedshorteditor}{0}
+\setcounter{labelname}{0}
+\setcounter{savedlabelname}{0}
+\setcounter{institution}{0}
+\setcounter{savedinstitution}{0}
+\setcounter{lista}{0}
+\setcounter{savedlista}{0}
+\setcounter{listb}{0}
+\setcounter{savedlistb}{0}
+\setcounter{listc}{0}
+\setcounter{savedlistc}{0}
+\setcounter{listd}{0}
+\setcounter{savedlistd}{0}
+\setcounter{liste}{0}
+\setcounter{savedliste}{0}
+\setcounter{listf}{0}
+\setcounter{savedlistf}{0}
+\setcounter{location}{0}
+\setcounter{savedlocation}{0}
+\setcounter{organization}{0}
+\setcounter{savedorganization}{0}
+\setcounter{origlocation}{0}
+\setcounter{savedoriglocation}{0}
+\setcounter{origpublisher}{0}
+\setcounter{savedorigpublisher}{0}
+\setcounter{publisher}{0}
+\setcounter{savedpublisher}{0}
+\setcounter{language}{0}
+\setcounter{savedlanguage}{0}
+\setcounter{origlanguage}{0}
+\setcounter{savedoriglanguage}{0}
+\setcounter{pageref}{0}
+\setcounter{savedpageref}{0}
+\setcounter{textcitecount}{0}
+\setcounter{textcitetotal}{0}
+\setcounter{textcitemaxnames}{0}
+\setcounter{biburlbigbreakpenalty}{100}
+\setcounter{biburlbreakpenalty}{200}
+\setcounter{biburlnumpenalty}{0}
+\setcounter{biburlucpenalty}{0}
+\setcounter{biburllcpenalty}{0}
+\setcounter{smartand}{1}
+\setcounter{bbx:relatedcount}{0}
+\setcounter{bbx:relatedtotal}{0}
+\setcounter{parentequation}{0}
+\setcounter{ALC@unique}{0}
+\setcounter{ALC@line}{0}
+\setcounter{ALC@rem}{0}
+\setcounter{ALC@depth}{0}
+\setcounter{r@tfl@t}{0}
+\setcounter{float@type}{4}
+\setcounter{blindtext}{1}
+\setcounter{Blindtext}{5}
+\setcounter{blind@countparstart}{0}
+\setcounter{blindlist}{0}
+\setcounter{blindlistlevel}{0}
+\setcounter{blindlist@level}{0}
+\setcounter{blind@listcount}{0}
+\setcounter{blind@levelcount}{0}
+\setcounter{blind@randomcount}{0}
+\setcounter{blind@randommax}{0}
+\setcounter{blind@pangramcount}{0}
+\setcounter{blind@pangrammax}{0}
+\setcounter{Item}{0}
+\setcounter{Hfootnote}{10}
+\setcounter{bookmark@seq@number}{95}
+\setcounter{section@level}{1}
+}

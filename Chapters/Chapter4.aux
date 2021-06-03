@@ -1,0 +1,255 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\@writefile{toc}{\contentsline {chapter}{\numberline {4}Deep Polarization-Based Semantic Segmentation}{53}{chapter.96}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\newlabel{Chapter4}{{4}{53}{Deep Polarization-Based Semantic Segmentation}{chapter.96}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.1}Introduction}{53}{section.97}\protected@file@percent }
+\newlabel{intro_4}{{4.1}{53}{Introduction}{section.97}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.2}Modality-related constraints}{55}{section.98}\protected@file@percent }
+\newlabel{mod_4}{{4.2}{55}{Modality-related constraints}{section.98}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces Reflection erroneous segmentations from RGB}}{55}{figure.caption.99}\protected@file@percent }
+\newlabel{fig:fail-seg}{{4.1}{55}{Reflection erroneous segmentations from RGB}{figure.caption.99}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.1}Formulation}{55}{subsection.100}\protected@file@percent }
+\newlabel{form_pol}{{4.2.1}{55}{Formulation}{subsection.100}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.2}Image Representation}{56}{subsection.101}\protected@file@percent }
+\newlabel{rep_pol}{{4.2.2}{56}{Image Representation}{subsection.101}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces HSL and RGB color models.\relax }}{57}{figure.caption.106}\protected@file@percent }
+\newlabel{fig:hslrgb}{{4.2}{57}{HSL and RGB color models.\relax }{figure.caption.106}{}}
+\newlabel{eq:hsl}{{4.5}{58}{Image Representation}{equation.108}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces HSL representation of polarization.}}{58}{figure.caption.109}\protected@file@percent }
+\newlabel{fig:4im}{{4.3}{58}{HSL representation of polarization}{figure.caption.109}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.3}Dataset}{59}{subsection.115}\protected@file@percent }
+\newlabel{data_pol}{{4.2.3}{59}{Dataset}{subsection.115}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.3.1}Synchronization}{60}{subsubsection.117}\protected@file@percent }
+\newlabel{sync}{{4.2.3.1}{60}{Synchronization}{subsubsection.117}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.4}{\ignorespaces Recovery strategy-based synchronization.\relax }}{61}{figure.caption.119}\protected@file@percent }
+\newlabel{fig:freqgraphnew}{{4.4}{61}{Recovery strategy-based synchronization.\relax }{figure.caption.119}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.3.2}Multimodal Alignment}{61}{subsubsection.120}\protected@file@percent }
+\newlabel{align}{{4.2.3.2}{61}{Multimodal Alignment}{subsubsection.120}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.5}{\ignorespaces Innacurate alignment through homography estimation.\relax }}{62}{figure.caption.121}\protected@file@percent }
+\newlabel{fig:viswarp}{{4.5}{62}{Innacurate alignment through homography estimation.\relax }{figure.caption.121}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.6}{\ignorespaces Before and after dense alignment between polarimetric and RGB intensity images.\relax }}{63}{figure.caption.128}\protected@file@percent }
+\newlabel{fig:beforeafteralign}{{4.6}{63}{Before and after dense alignment between polarimetric and RGB intensity images.\relax }{figure.caption.128}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.3}Augmentation}{63}{section.129}\protected@file@percent }
+\newlabel{aug_4}{{4.3}{63}{Augmentation}{section.129}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.1}Rotation}{64}{subsection.130}\protected@file@percent }
+\newlabel{rot}{{4.3.1}{64}{Rotation}{subsection.130}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.7}{\ignorespaces Illustration of the pixel grid of a rotated DoFP polarimetric camera. \relax }}{64}{figure.caption.131}\protected@file@percent }
+\newlabel{rottheo}{{4.7}{64}{Illustration of the pixel grid of a rotated DoFP polarimetric camera. \relax }{figure.caption.131}{}}
+\newlabel{eq:Rot}{{4.16}{65}{Rotation}{equation.132}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.8}{\ignorespaces Step-by-step rotation applied to polarimetric image.\relax }}{65}{figure.caption.133}\protected@file@percent }
+\newlabel{rotreal}{{4.8}{65}{Step-by-step rotation applied to polarimetric image.\relax }{figure.caption.133}{}}
+\newlabel{eq:mod}{{4.17}{65}{Rotation}{equation.134}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.9}{\ignorespaces Experimental validation of rotation process.}}{66}{figure.caption.135}\protected@file@percent }
+\newlabel{proofexper}{{4.9}{66}{Experimental validation of rotation process}{figure.caption.135}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.2}Symmetry}{66}{subsection.136}\protected@file@percent }
+\newlabel{syn}{{4.3.2}{66}{Symmetry}{subsection.136}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.10}{\ignorespaces Illustration of the flipping procedure.}}{67}{figure.caption.137}\protected@file@percent }
+\newlabel{flipreadtheo}{{4.10}{67}{Illustration of the flipping procedure}{figure.caption.137}{}}
+\newlabel{eq:flip}{{4.18}{67}{Symmetry}{equation.138}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.11}{\ignorespaces Flipping operation on real image and impact.}}{67}{figure.caption.139}\protected@file@percent }
+\newlabel{flipread}{{4.11}{67}{Flipping operation on real image and impact}{figure.caption.139}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.3}Final procedure}{68}{subsection.140}\protected@file@percent }
+\newlabel{fin_proc}{{4.3.3}{68}{Final procedure}{subsection.140}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.12}{\ignorespaces Illustration of the augmentation per image procedure.}}{68}{figure.caption.141}\protected@file@percent }
+\newlabel{augment}{{4.12}{68}{Illustration of the augmentation per image procedure}{figure.caption.141}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.4}Network architectures}{69}{section.143}\protected@file@percent }
+\newlabel{net_4}{{4.4}{69}{Network architectures}{section.143}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.1}SegNet}{69}{subsection.144}\protected@file@percent }
+\newlabel{segnet_sec}{{4.4.1}{69}{SegNet}{subsection.144}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.13}{\ignorespaces Illustation of SegNet architecture.\relax }}{70}{figure.caption.145}\protected@file@percent }
+\newlabel{seg-arch}{{4.13}{70}{Illustation of SegNet architecture.\relax }{figure.caption.145}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4.1}{\ignorespaces Detailed SegNet architecture.\relax }}{70}{table.caption.146}\protected@file@percent }
+\newlabel{tab:segnet}{{4.1}{70}{Detailed SegNet architecture.\relax }{table.caption.146}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.2}DeepLab V3+}{70}{subsection.147}\protected@file@percent }
+\newlabel{deeplab_sec}{{4.4.2}{70}{DeepLab V3+}{subsection.147}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.5}Experiments}{70}{section.149}\protected@file@percent }
+\newlabel{exp_4}{{4.5}{70}{Experiments}{section.149}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.14}{\ignorespaces Illustation of DeepLab V3+ architecture.}}{71}{figure.caption.148}\protected@file@percent }
+\newlabel{deeplab-fig}{{4.14}{71}{Illustation of DeepLab V3+ architecture}{figure.caption.148}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5.1}Modality-based Comparison}{71}{subsection.150}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.5.1.1}Results}{72}{subsubsection.152}\protected@file@percent }
+\newlabel{fig:polares}{{4.15a}{72}{Polarimetry PwSS qualitative results.\relax }{figure.caption.153}{}}
+\newlabel{sub@fig:polares}{{a}{72}{Polarimetry PwSS qualitative results.\relax }{figure.caption.153}{}}
+\newlabel{fig:rgbres}{{4.15b}{72}{Colorimetry PwSS qualitative results.\relax }{figure.caption.153}{}}
+\newlabel{sub@fig:rgbres}{{b}{72}{Colorimetry PwSS qualitative results.\relax }{figure.caption.153}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.15}{\ignorespaces Qualitative results comparing colorimetry and polarimetry with identical scenes.}}{72}{figure.caption.153}\protected@file@percent }
+\newlabel{fig:resultspwss}{{4.15}{72}{Qualitative results comparing colorimetry and polarimetry with identical scenes}{figure.caption.153}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4.2}{\ignorespaces PwSS quantitative results comparing polarimetry and RGB.\relax }}{73}{table.caption.154}\protected@file@percent }
+\newlabel{AccDiff}{{4.2}{73}{PwSS quantitative results comparing polarimetry and RGB.\relax }{table.caption.154}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.5.1.2}Discussion}{73}{subsubsection.155}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5.2}Augmentation-based Comparison}{74}{subsection.156}\protected@file@percent }
+\newlabel{abc}{{4.5.2}{74}{Augmentation-based Comparison}{subsection.156}{}}
+\newlabel{eq_dice}{{4.21}{74}{Augmentation-based Comparison}{equation.158}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.5.2.1}Results}{75}{subsubsection.159}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.16}{\ignorespaces Illustration of the diverse segmentation results obtained with different augmentation methods.}}{76}{figure.caption.161}\protected@file@percent }
+\newlabel{comp1}{{4.16}{76}{Illustration of the diverse segmentation results obtained with different augmentation methods}{figure.caption.161}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4.3}{\ignorespaces Quantitative evaluation of augmentation procedures.}}{76}{table.caption.163}\protected@file@percent }
+\newlabel{metriques}{{4.3}{76}{Quantitative evaluation of augmentation procedures}{table.caption.163}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.5.2.2}Discussion}{76}{subsubsection.164}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.17}{\ignorespaces Examples of segmentation results according to the augmentation methods.}}{77}{figure.caption.162}\protected@file@percent }
+\newlabel{figres_aug}{{4.17}{77}{Examples of segmentation results according to the augmentation methods}{figure.caption.162}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.6}Summary}{77}{section.165}\protected@file@percent }
+\newlabel{sum_4}{{4.6}{77}{Summary}{section.165}{}}
+\@setckpt{Chapters/Chapter4}{
+\setcounter{page}{79}
+\setcounter{equation}{21}
+\setcounter{enumi}{0}
+\setcounter{enumii}{0}
+\setcounter{enumiii}{0}
+\setcounter{enumiv}{0}
+\setcounter{footnote}{6}
+\setcounter{mpfootnote}{0}
+\setcounter{part}{0}
+\setcounter{chapter}{4}
+\setcounter{section}{6}
+\setcounter{subsection}{0}
+\setcounter{subsubsection}{0}
+\setcounter{paragraph}{0}
+\setcounter{subparagraph}{0}
+\setcounter{figure}{17}
+\setcounter{table}{3}
+\setcounter{LT@tables}{1}
+\setcounter{LT@chunks}{1}
+\setcounter{caption@flags}{2}
+\setcounter{continuedfloat}{0}
+\setcounter{subfigure}{0}
+\setcounter{subtable}{0}
+\setcounter{tabx@nest}{0}
+\setcounter{listtotal}{0}
+\setcounter{listcount}{0}
+\setcounter{liststart}{0}
+\setcounter{liststop}{0}
+\setcounter{citecount}{0}
+\setcounter{citetotal}{0}
+\setcounter{multicitecount}{0}
+\setcounter{multicitetotal}{0}
+\setcounter{instcount}{289}
+\setcounter{maxnames}{999}
+\setcounter{minnames}{3}
+\setcounter{maxitems}{3}
+\setcounter{minitems}{1}
+\setcounter{citecounter}{0}
+\setcounter{maxcitecounter}{0}
+\setcounter{savedcitecounter}{0}
+\setcounter{uniquelist}{0}
+\setcounter{uniquename}{0}
+\setcounter{refsection}{0}
+\setcounter{refsegment}{0}
+\setcounter{maxextratitle}{0}
+\setcounter{maxextratitleyear}{0}
+\setcounter{maxextraname}{3}
+\setcounter{maxextradate}{0}
+\setcounter{maxextraalpha}{0}
+\setcounter{abbrvpenalty}{50}
+\setcounter{highnamepenalty}{50}
+\setcounter{lownamepenalty}{25}
+\setcounter{maxparens}{3}
+\setcounter{parenlevel}{0}
+\setcounter{mincomprange}{10}
+\setcounter{maxcomprange}{100000}
+\setcounter{mincompwidth}{1}
+\setcounter{afterword}{0}
+\setcounter{savedafterword}{0}
+\setcounter{annotator}{0}
+\setcounter{savedannotator}{0}
+\setcounter{author}{0}
+\setcounter{savedauthor}{0}
+\setcounter{bookauthor}{0}
+\setcounter{savedbookauthor}{0}
+\setcounter{commentator}{0}
+\setcounter{savedcommentator}{0}
+\setcounter{editor}{0}
+\setcounter{savededitor}{0}
+\setcounter{editora}{0}
+\setcounter{savededitora}{0}
+\setcounter{editorb}{0}
+\setcounter{savededitorb}{0}
+\setcounter{editorc}{0}
+\setcounter{savededitorc}{0}
+\setcounter{foreword}{0}
+\setcounter{savedforeword}{0}
+\setcounter{holder}{0}
+\setcounter{savedholder}{0}
+\setcounter{introduction}{0}
+\setcounter{savedintroduction}{0}
+\setcounter{namea}{0}
+\setcounter{savednamea}{0}
+\setcounter{nameb}{0}
+\setcounter{savednameb}{0}
+\setcounter{namec}{0}
+\setcounter{savednamec}{0}
+\setcounter{translator}{0}
+\setcounter{savedtranslator}{0}
+\setcounter{shortauthor}{0}
+\setcounter{savedshortauthor}{0}
+\setcounter{shorteditor}{0}
+\setcounter{savedshorteditor}{0}
+\setcounter{labelname}{0}
+\setcounter{savedlabelname}{0}
+\setcounter{institution}{0}
+\setcounter{savedinstitution}{0}
+\setcounter{lista}{0}
+\setcounter{savedlista}{0}
+\setcounter{listb}{0}
+\setcounter{savedlistb}{0}
+\setcounter{listc}{0}
+\setcounter{savedlistc}{0}
+\setcounter{listd}{0}
+\setcounter{savedlistd}{0}
+\setcounter{liste}{0}
+\setcounter{savedliste}{0}
+\setcounter{listf}{0}
+\setcounter{savedlistf}{0}
+\setcounter{location}{0}
+\setcounter{savedlocation}{0}
+\setcounter{organization}{0}
+\setcounter{savedorganization}{0}
+\setcounter{origlocation}{0}
+\setcounter{savedoriglocation}{0}
+\setcounter{origpublisher}{0}
+\setcounter{savedorigpublisher}{0}
+\setcounter{publisher}{0}
+\setcounter{savedpublisher}{0}
+\setcounter{language}{0}
+\setcounter{savedlanguage}{0}
+\setcounter{origlanguage}{0}
+\setcounter{savedoriglanguage}{0}
+\setcounter{pageref}{0}
+\setcounter{savedpageref}{0}
+\setcounter{textcitecount}{0}
+\setcounter{textcitetotal}{0}
+\setcounter{textcitemaxnames}{0}
+\setcounter{biburlbigbreakpenalty}{100}
+\setcounter{biburlbreakpenalty}{200}
+\setcounter{biburlnumpenalty}{0}
+\setcounter{biburlucpenalty}{0}
+\setcounter{biburllcpenalty}{0}
+\setcounter{smartand}{1}
+\setcounter{bbx:relatedcount}{0}
+\setcounter{bbx:relatedtotal}{0}
+\setcounter{parentequation}{0}
+\setcounter{ALC@unique}{0}
+\setcounter{ALC@line}{0}
+\setcounter{ALC@rem}{0}
+\setcounter{ALC@depth}{0}
+\setcounter{r@tfl@t}{0}
+\setcounter{float@type}{4}
+\setcounter{blindtext}{1}
+\setcounter{Blindtext}{5}
+\setcounter{blind@countparstart}{0}
+\setcounter{blindlist}{0}
+\setcounter{blindlistlevel}{0}
+\setcounter{blindlist@level}{0}
+\setcounter{blind@listcount}{0}
+\setcounter{blind@levelcount}{0}
+\setcounter{blind@randomcount}{0}
+\setcounter{blind@randommax}{0}
+\setcounter{blind@pangramcount}{0}
+\setcounter{blind@pangrammax}{0}
+\setcounter{Item}{0}
+\setcounter{Hfootnote}{10}
+\setcounter{bookmark@seq@number}{74}
+\setcounter{section@level}{1}
+}

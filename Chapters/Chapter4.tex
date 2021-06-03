@@ -26,13 +26,13 @@ Recently, pixel-wise semantic segmentation (PwSS) has achieved great success esp
 It is nevertheless notable some contributions are tackling the problem, such as few-shot learning \cite{dong2018few, siam2019amp}. However, a very small minority transpose the data space to apply a constraint ahead of the network rather than impacting the processing core.
 
 We aim to propose a complete PwSS pipeline to describe complex urban scenes based on polarimetric imagery.Here, "complex" defines the possibility of adverse weather conditions and scenes subject to reflection. We start with an observation: urban scenes are prone to specular relfection. Indeed, whether it is the metallic paint of cars, road signs, the presence of windows or even the road in rainy conditions, these surfaces reflect the light.Rather than defining these reactions in a space that saturates in these cases, we propose to implement a modality in which these phenomena are defined.
-We then propose using polarization instead of colorimetry which would export its constraints relative to these occurrences. We therefore rely on polarization to simplify the segmentation problem in urban environments.
+We then propose using polarization instead of color imaging which would export its constraints relative to these occurrences. We therefore rely on polarization to simplify the segmentation problem in urban environments.
 Thus, we need deconstructing all the achievements in the PwSS domains to reconstruct a polarization-adapted pipeline: the dataset, the image representation, the augmentation and the estimation of the results.
 
 In practice, the methods require massive datasets like KITTI \cite{Geiger2012CVPR} or Cityscape \cite{Cordts2016Cityscapes} that deliver both corresponding input image with a reference segmented map.
 These mass requirements are onerous to achieve when implementing a non-conventional modality, which motivates a more measured use of the data.
 A straightforward approach would be to acquire a large amount of data and then annotate it to enrich the generalization capacity of the network. Since our approach is alternative, we propose to acquire a limited number of images and use the augmentation to enrich the set.
-Although augmentation has been popularized for its advantages in terms of problem generalization and overfitting prevention, it is only viable for interpolable images. In short, as soon as an image is directly related to the physics of the scene, this process is not applicable since it will alter the validity of the observation. On the other hand, since the colorimetry is interpolable and does not report any alteration as a result of it, then the augmentation is valid for this type of image.
+Although augmentation has been popularized for its advantages in terms of problem generalization and overfitting prevention, it is only viable for interpolable images. In short, as soon as an image is directly related to the physics of the scene, this process is not applicable since it will alter the validity of the observation. On the other hand, since the color information is interpolable and does not report any alteration as a result of it, then the augmentation is valid for this type of image.
 In line with the initial objective of the augmentation, we define a group of transforms applicable to polarimetric imaging and in particular, we focus on the physical adequacy of these.
 Since it is necessary to benchmark the proposed solution, we tackle the possibility of evaluating our method and especially in competition with the conventional approaches. Aiming this objective, we have aggregated our dataset taking into account that each polarimetric image and segmentation pair correspond to an RGB image and segmentation pair. 
  
@@ -192,7 +192,7 @@ Conventionally, since DL-based methods are greedy, the more data the better. Thi
 Our approach is somewhat alternative although also constrained by modality. The idea is to obtain viable results with the limited data available.
 First, it is necessary to acquire data in urban areas and under adverse conditions.
 
-We constituted Polabot\footnote{Available at: \url{http://vibot.cnrs.fr/polabot.html}}, a multimodal oriented dataset composed of 3 synchronized modalities: polarization, colorimetry and near infrared, acquired with the cameras referenced in Table \ref{carac}. 
+We constituted Polabot\footnote{Available at: \url{http://vibot.cnrs.fr/polabot.html}}, a multimodal oriented dataset composed of 3 synchronized modalities: polarization, colorization and near infrared, acquired with the cameras referenced in Table \ref{carac}. 
 As a final image collection, it is composed of 178 multimodal aligned, synchronized and annotated urban scene images with eight unique classes: unlabeled, sky, water, windows, road, car, building and none. Unlabeled corresponding to segmentation errors during manual annotation and none being the areas defined as irrelevant for our application. The different scenes propose several complex scenarios composed of puddles or buildings' windows which are often incorrectly estimated in usual methods.
 Since this collection is very restricted and insufficient to train a sustainable model, the augmentation presented in Section \ref{aug_4} represent a required requirement.
 
@@ -504,7 +504,7 @@ Finally, implementing all these manipulations, we have proposed a new pipeline t
 
 \section{Network architectures}\label{net_4}
 
-As a usefulness proof of polarization for the understanding of urban areas, we propose performing a benchmark comparing colorimetry and polarimetry, but also to approve the augmentation method presented in Section \ref{aug_4}.
+As a usefulness proof of polarization for the understanding of urban areas, we propose performing a benchmark comparing color imaging and polarization imaging, but also to approve the augmentation method presented in Section \ref{aug_4}.
 
 Since one of the most widespread understanding applications is DL-based PwSS, we propose to perform this quantitative and qualitative study using proven architecture in literature.
 
@@ -583,7 +583,7 @@ In this manner, it will be possible to quantify the usefulness and/or the necess
 The experiments conducted allow two independent scopes.
 
 
-On one hand, a series of experiments is focused on the differences of modalities. The prime goal of this set is to demonstrate the interest of polarization over colorimetry. The idea is to prove that with the same comparison method, a alternative form of information sustains a considerable interest for some fields. Therefore, without needing to unnecessarily increase the complexity of the processing cores, it is possible to reach satisfactory results.
+On one hand, a series of experiments is focused on the differences of modalities. The prime goal of this set is to demonstrate the interest of polarization over colorization. The idea is to prove that with the same comparison method, a alternative form of information sustains a considerable interest for some fields. Therefore, without needing to unnecessarily increase the complexity of the processing cores, it is possible to reach satisfactory results.
 
 
 In a second step, we propose to investigate the usefulness of an augmentation adapted to a physics-based modality. Here, in order for the algorithm to grasp maximum advantage of the available information (valid or invalid), we use a state-of-the-art DCNN. 
@@ -608,7 +608,7 @@ Therefore, a simple metric, allowing an explicit comparison, was chosen. Indeed,
 with C the class, $^pP_C$ the correctly predicted pixel of the class C and $^gP_C$ the ground truth pixel of class C.
 
 For the training procedure, the construction of the dataset (explained in previous section) allows for pre-training and therefore the use of transfer learning\cite{torrey2010transfer,pan2009survey} to help convergence and benefit from efficient previous training. Therefore, both networks have been pre-trained using VGG16. 
-This process, in addition to being advantageous, will allow us both to verify if the HSL to RGB approach is valid but also to see the adaptation capabilities of the network to a physics-based modality although pre-trained with colorimetry.
+This process, in addition to being advantageous, will allow us both to verify if the HSL to RGB approach is valid but also to see the adaptation capabilities of the network to a physics-based modality although pre-trained with color images.
 
 \subsubsection{Results}
 

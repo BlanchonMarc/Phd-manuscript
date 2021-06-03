@@ -1,0 +1,74 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\babel@toc {english}{}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Illustration of a DoFP polarization sensor micro-grid.\relax }}{12}{figure.caption.22}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Illustration of unpolarized light filtration through $45\qopname \relax o{deg}$ linear polarizer.\relax }}{13}{figure.caption.23}%
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Zoom on a polarimetric image.}}{13}{figure.caption.24}%
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Spherical representation of Stokes vector on Poincar\'e Sphere.\relax }}{14}{figure.caption.27}%
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Sample of MNIST Dataset.}}{16}{figure.caption.34}%
+\contentsline {figure}{\numberline {2.6}{\ignorespaces Illustration of different pooling strategies.\relax }}{20}{figure.caption.39}%
+\contentsline {figure}{\numberline {2.7}{\ignorespaces Illustration of indexed pooling.\relax }}{21}{figure.caption.40}%
+\contentsline {figure}{\numberline {2.8}{\ignorespaces Diagram of ASPP strategy.\relax }}{22}{figure.caption.43}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Simonyan and Zisserman's VGG Architecture.}}{26}{figure.caption.53}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Illustration of ResNet block.}}{28}{figure.caption.58}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Illustration of LiDar point-cloud.}}{31}{figure.caption.64}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Intel RealSense acquisition and reconstruction example.}}{34}{figure.caption.71}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Illustration of stereovision depth estimation using Woordfor et al. method.}}{34}{figure.caption.72}%
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Estimate computed from Favaro and Soatto's method.}}{35}{figure.caption.74}%
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Example of estimates from Parashar et al.}}{36}{figure.caption.75}%
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Eigen et al. Architecture.}}{38}{figure.caption.79}%
+\contentsline {figure}{\numberline {3.9}{\ignorespaces Eigen et al. Results on NYU dataset.}}{39}{figure.caption.80}%
+\contentsline {figure}{\numberline {3.10}{\ignorespaces Results proposed by Garg et al.}}{41}{figure.caption.82}%
+\contentsline {figure}{\numberline {3.11}{\ignorespaces Godard et al. qualitative results.}}{41}{figure.caption.83}%
+\contentsline {figure}{\numberline {3.12}{\ignorespaces Mehta et al. GAN Architecture.}}{42}{figure.caption.84}%
+\contentsline {figure}{\numberline {3.13}{\ignorespaces Poggi et al. quanlitative evaluation.}}{43}{figure.caption.85}%
+\contentsline {figure}{\numberline {3.14}{\ignorespaces Zhou et al. Architecture.}}{44}{figure.caption.86}%
+\contentsline {figure}{\numberline {3.15}{\ignorespaces Framework propoed by Yang et al.}}{45}{figure.caption.87}%
+\contentsline {figure}{\numberline {3.16}{\ignorespaces Mahjourian et al. Qualitative evaluation compared to previous methods..}}{45}{figure.caption.88}%
+\contentsline {figure}{\numberline {3.17}{\ignorespaces Geonet Network.}}{46}{figure.caption.89}%
+\contentsline {figure}{\numberline {3.18}{\ignorespaces DF-Net Architecture.}}{47}{figure.caption.90}%
+\contentsline {figure}{\numberline {3.19}{\ignorespaces LEGO Architecture.}}{48}{figure.caption.91}%
+\contentsline {figure}{\numberline {3.20}{\ignorespaces EPC++ Architecture.}}{48}{figure.caption.92}%
+\contentsline {figure}{\numberline {3.21}{\ignorespaces Quantitative evaluation of Casser et al. method.}}{50}{figure.caption.93}%
+\contentsline {figure}{\numberline {3.22}{\ignorespaces Monodepth v2 key principles.}}{50}{figure.caption.94}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Reflection erroneous segmentations from RGB}}{55}{figure.caption.99}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces HSL and RGB color models.\relax }}{57}{figure.caption.106}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces HSL representation of polarization.}}{58}{figure.caption.109}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Recovery strategy-based synchronization.\relax }}{61}{figure.caption.119}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Innacurate alignment through homography estimation.\relax }}{62}{figure.caption.121}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Before and after dense alignment between polarimetric and RGB intensity images.\relax }}{63}{figure.caption.128}%
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Illustration of the pixel grid of a rotated DoFP polarimetric camera. \relax }}{64}{figure.caption.131}%
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Step-by-step rotation applied to polarimetric image.\relax }}{65}{figure.caption.133}%
+\contentsline {figure}{\numberline {4.9}{\ignorespaces Experimental validation of rotation process.}}{66}{figure.caption.135}%
+\contentsline {figure}{\numberline {4.10}{\ignorespaces Illustration of the flipping procedure.}}{67}{figure.caption.137}%
+\contentsline {figure}{\numberline {4.11}{\ignorespaces Flipping operation on real image and impact.}}{67}{figure.caption.139}%
+\contentsline {figure}{\numberline {4.12}{\ignorespaces Illustration of the augmentation per image procedure.}}{68}{figure.caption.141}%
+\contentsline {figure}{\numberline {4.13}{\ignorespaces Illustation of SegNet architecture.\relax }}{70}{figure.caption.145}%
+\contentsline {figure}{\numberline {4.14}{\ignorespaces Illustation of DeepLab V3+ architecture.}}{71}{figure.caption.148}%
+\contentsline {figure}{\numberline {4.15}{\ignorespaces Qualitative results comparing colorimetry and polarimetry with identical scenes.}}{72}{figure.caption.153}%
+\contentsline {figure}{\numberline {4.16}{\ignorespaces Illustration of the diverse segmentation results obtained with different augmentation methods.}}{76}{figure.caption.161}%
+\contentsline {figure}{\numberline {4.17}{\ignorespaces Examples of segmentation results according to the augmentation methods.}}{77}{figure.caption.162}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Illustration of imbrication of polarimetry peculiar and perspective geometry. Visual representation of angle of polarization measurement.\relax }}{83}{figure.caption.171}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Illustration of the electric field estimation method.\relax }}{85}{figure.caption.181}%
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Angular difference visual representation. Here, the reference of the angle of polarization is vertical.\relax }}{86}{figure.caption.184}%
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Illustration of the network as well as the loss calculation strategy and its back propagation. Drawing inspiration from \cite {godard2019digging}, the depth estimation network is a UNet with a ResNet50 layout.\relax }}{88}{figure.caption.189}%
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Illustration of results on five independent road scenes in mixed weather conditions.}}{91}{figure.caption.195}%
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Case of estimation failure using P2D comparing to Monodepth v2.}}{93}{figure.caption.198}%
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Early Fusion architecture illustration.}}{95}{figure.caption.201}%
+\contentsline {figure}{\numberline {5.8}{\ignorespaces Latent space Fusion architecture illustration.}}{96}{figure.caption.203}%
+\contentsline {figure}{\numberline {5.9}{\ignorespaces Late Fusion architecture illustration. Prior Estimations.}}{98}{figure.caption.208}%
+\contentsline {figure}{\numberline {5.10}{\ignorespaces Late Fusion architecture illustration. Late refinement.}}{99}{figure.caption.209}%
+\contentsline {figure}{\numberline {5.11}{\ignorespaces Illustration of depth to normals through oriented derivatives.}}{101}{figure.caption.216}%
+\contentsline {figure}{\numberline {5.12}{\ignorespaces Normals estimation from Monodepth v2 estimate on two different scenes.}}{103}{figure.caption.221}%
+\contentsline {figure}{\numberline {5.13}{\ignorespaces Angles computed from normals.}}{103}{figure.caption.222}%
+\contentsline {figure}{\numberline {5.14}{\ignorespaces Aligned angle of polarization.\relax }}{104}{figure.caption.223}%
+\contentsline {figure}{\numberline {5.15}{\ignorespaces Resulting error image from normal angles comparison.}}{104}{figure.caption.224}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }

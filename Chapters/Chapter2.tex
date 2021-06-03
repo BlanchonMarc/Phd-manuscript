@@ -23,17 +23,11 @@ Finally, in Section \ref{seg4}, we will propose a conclusion and a discussion re
 
 Segmentation remain a substantial area of computer vision. It is also historical since it is possible to find contributions proposed in the 70's \cite{ohta1978analysis}. The main idea of the domain is to be able to delimit and differentiate objects/areas. Thus, the segmentation can be assimilated to a transposition of an image space to an intermediate space, semantic or not. That is to say that instead of utilizing colorimetric information, the representation is changed to differentiate the areas of interest.\\
 
-{
-\begin{tabular}[h]{p{0.05\textwidth}!{\color{gray}\vrule width 2pt}p{0.7\textwidth}}
-	 &\textit{Reminder on semantic with respect to segmentation.}\\
-	 &\textit{In addition to partitioning the images, knowledge is infused into the algorithm. For example, a simple threshold is a naive segmentation, segmentation by feature group into several classes can be semantic if the feature space is differentiable and the various labels are identified. }\\
-\end{tabular}
-}\\
 
 
-Some multiple approaches can be used to perform a segmentation operation, apart from learning-based ones. Indeed, even before the advent of deep learning, it was possible to divide the domain into five subdivisions: region-based, feature clustering-based, edge-based, threshold-based and model-based.
+Multiple approaches can be used to perform image segmentation, apart from learning-based ones. Indeed, even before the advent of deep learning, it was possible to divide the different methods into five categories: region-based, feature clustering-based, edge-based, threshold-based and model-based.
 
-Region-based and edge-based are two subtypes that are significantly correlated \cite{kaganami2009region,chu1990integration}. It is a question of separating the image using descriptors which have the effect of describing the image using contours from which regions can be deduced. As example, \cite{iannizzotto2000fast, sappa2006unsupervised} both proposed edge-based segmentation and \cite{wani1994edge, mukherjee2014region} proposed contour-based approaches. It is explicit these two techniques are highly linked and seamlessly one can shift to the other and vice versa.
+Region-based and edge-based are two types of methods that are significantly correlated \cite{kaganami2009region,chu1990integration}. The principle is to divide the image using descriptors which have the effect of describing the image using contours from which regions can be deduced. For example, \cite{iannizzotto2000fast, sappa2006unsupervised} both proposed edge-based segmentation and \cite{wani1994edge, mukherjee2014region} proposed contour-based approaches. It is explicit that these two techniques are highly linked and seamlessly one can shift from one to the other.
 
 
 The threshold-based techniques \cite{bhargavi2014survey} are quite naive. Whether the level is deduced iteratively or empyrically, this method consists in fixing a value at which the image will be bounded and then binarized. Predominantly, this technique allows to separate areas like the foreground and background or to highlight recognizable objects.
@@ -48,15 +42,15 @@ Finally, model-based segmentation consists in adopting descriptive models to dif
 In spite of all these possibilities and their respective robustness, the algorithms remain rather tied to the applications and unfortunately, they are rather rarely generalizable (viz. when they are designed for one task, they rarely adapt to others).
 
 
-At present, the vast majority of algorithms have shifted into the field of deep learning. This is purely due to the performance observed with this approach. Thus DL usage allows to prevent the creation of a handmade feature space. In addition, DCNNs have proven their generalization abilities. The primary constraint is the amount of data but once this criterion is met, then the networks have such an abstraction capacity it is unnecessary to explicitly constrain the problem. Hence, some algorithms infuse knowledge into the network even if this practice is quite marginal. Preferably, researchers are seeking blocks or layers that will allow to abstract the data to higher degree and render it more understandable for the algorithms. 
+At present, the vast majority of algorithms have shifted into the field of deep learning. This is purely due to the performance observed with this approach. Thus DL usage allows to prevent the creation of a handmade feature space. In addition, DCNNs have proven their generalization abilities. The primary constraint is the amount of data but once this criterion is met, then the networks have such an abstraction capacity it is unnecessary to explicitly constrain the problem. Hence, some algorithms provide knowledge into the network even if this practice is quite marginal. Preferably, researchers are seeking blocks or layers that will allow to abstract the data to higher degree and render it more understandable for the algorithms. 
 
 
-\subsection{Major backbones and network: a comparative evaluation}\label{seg1}
+\subsection{Major backbones and networks: a comparative evaluation}\label{seg1}
 
 In the semantic learning-based segmentation landscape, a large number of methods are available. Indeed, the field is active and in constant evolution. However, it is possible to extract methods that stand out from the crowd. Moreover, among all the methods, a criterion allows to differentiate them: the backbone.
 
 
-The backbone represents a term that designates the feature extraction structure. It can also be termed — erroneously — encoder and allows to transpose an image from its initial space to a latent space, usually a feature vector. The concept differentiating the term encoder and backbone is the backbone is predominantly used pre-trained and has been proven for feature extraction and thus classification tasks. On the contrary, an encoder is a general term that only designates an architecture that reduces the dimensionality of the data by densifying the information.
+The backbone represents a term that designates the feature extraction structure. It can also be termed — erroneously — encoder and allows to transpose an image from its initial space to a latent space, usually a feature vector. The concept differentiating the terms encoder and backbone is that the backbone is predominantly used pre-trained and has been proven for feature extraction and thus classification tasks. On the contrary, an encoder is a general term that only designates an architecture that reduces the dimensionality of the data by densifying the information.
 
 From these feature extractors, a vast number of networks have been derived. Therefore, the models have an already proven part for the classification and extraction task. As a reminder, a segmentation network can be summarized as a classification network with a secondary structure to recover the initial image dimension. It is also possible to call a segmentation network a classification network at pixel level.
 
@@ -263,7 +257,7 @@ This evaluation table shows that mainly two backbones are used, namely VGG and R
 
 \subsection{VGG}\label{seg2}
 
-VGG \cite{simonyan2014very}, standing for \emph{Visual Geometry Group}, is an image recognition network that was founded in 2015. It can be considered the pioneer in the field of classification and was, until the appearance of ResNet the only viable backbone.
+VGG \cite{simonyan2014very}, standing for \emph{Visual Geometry Group}, is an image recognition network that was proposed in 2015 by the VGG lab at Oxforfd university. It can be considered the pioneer in the field of classification and was, until the appearance of ResNet the only viable backbone.
 This encoding network is based on small $3x3$ convolutions and is reasonably simple (compared to recent architectures). Similar to all encoders, it allows to reduce the dimensionality of the input data and to densify it to obtain a representative vector, in particular it encodes an image $MxNx3$ into a feature vector $1x1x1000$. Initially and as shown in Figure \ref{fig:vgg}, $M = 224$ and $N = 224$.
 
 \begin{figure}[h]
@@ -280,13 +274,13 @@ From its state-of-the-art performances, this network has allowed to derive multi
 
 \emph{Fully Convolutional Networks} (FCN) \cite{long2015fully}, is an architecture proposed by Jonathan Long, Evan Shelhamer and Trevor Darrell in 2015. It is a highly recognized work to be the "first" pixel-wise semantic segmentation network (PwSS). Wanting to remove the image size constraint, the prevailing idea was to base the architecture solely on convolution layers. Convolution effectively represents a valid technique ensuring the same image size at the output of the pipeline. 
 However, the challenge was predominantly based on this dimensionality. As follows, Long et al. proposed an approach based on pooling and deconvolution to retrieve the image dimension while keeping the semantic segmentation information across layers.
-While the encoder extracts the information and interprets the image, the decoder considers the task of increasing the dimension while keeping the localization aspect. Only, the effect of downsampling allows reducing the dimension but at the cost of the resolution and the definition when proceeding to the upsampling. In response to this phenomenon, Long et al. introduced the concept of skip connection allowing an aggregation, in the decoder, of information coming directly from the encoder. By this approach, the model is efficient to infer fine-grained segmentation while taking advantage of the dimensionality reduction of the encoder.
+While the encoder extracts the information and interprets the image, the decoder considers the task of increasing the dimension while keeping the localization aspect. Only, the effect of downsampling allows reducing the dimension but at the cost of the resolution and the details when proceeding to the upsampling. In response to this phenomenon, Long et al. introduced the concept of skip connection allowing an aggregation, in the decoder, of information coming directly from the encoder. By this approach, the model is efficient to infer fine-grained segmentation while taking advantage of the dimensionality reduction of the encoder.
 
 
 \subsubsection{SegNet}
 
-SegNet \cite{DBLP:journals/corr/BadrinarayananH15} is a network highly inspired by FCN but uses other innovative principles. While Long et al. proposed the skip connection concept, SegNet proposes a symmetric architecture with VGG.
-And, as a replacement to skip connections, Badrinarayanan et al. develop the principle of indexed pooling. The encoder uses maxpooling operations to reduce the dimension and obtain a feature vector. From this pooling block, an information map of lower dimensionality and an index map is extracted. This index map will then be used in the unpooling operations of the decoder to "reconstruct" the segmentation map with a proper positioning. 
+SegNet \cite{DBLP:journals/corr/BadrinarayananH15} is a network highly inspired by FCN but uses other innovative principles. While FCN proposed the skip connection concept, SegNet proposes a symmetric architecture with VGG.
+And, as a replacement to skip connections, authors develop the principle of indexed pooling. The encoder uses maxpooling operations to reduce the dimension and obtain a feature vector. From this pooling block, an information map of lower dimensionality and an index map is extracted similarly to \cite{zeiler2014visualizing}. This index map will then be used in the unpooling operations of the decoder to "reconstruct" the segmentation map with a proper positioning. 
 
 
 
@@ -319,34 +313,34 @@ This contribution is focused on an innovative sampling method based on a multi-l
 There are multiple versions of DeepLab. However, it is possible to summarize the ResNet-based contributions into some key concepts brought by Chen et al. \cite{chen2018deeplab}.
 First, the global architecture is based on dilated convolutions or atrous convolutions. As expressed for DilatedNet, this operation allows many advantages like dimensionality reduction or judicious management of the receptive field.
 
-Subsequently, this method proposes the use of bilinear interpolation which seems to represent a naive approach to upsampling. In practice, the authors expressed the use of another dimensionality recover strategy is not especially necessary to obtain efficient results.
+Subsequently, this method proposes the use of bilinear interpolation which seems to represent a naive approach to upsampling. In practice, the authors expressed that the use of another dimensionality recovery strategy is not especially necessary to obtain efficient results.
 
-Ultimately, the contribution proposes the use of \emph{fully connected CRF}. The principle is to consider the pixels as a node in a graph and that all these nodes are connected by different means. Thus, the idea is to enforce the assignment of similar labels to adjacent pixels. The usefulness of this kind of structure could be justified by the classification of areas instead of dependent pixels. Thus, this architecture allows to keep a coherent structure and reduce the aberrations of segmentations with nested classes. In addition, fcCRFs shows great performances with regard to the edges and the object separation.
+Ultimately, the contribution proposes the use of \emph{fully connected CRF}. The principle is to consider the pixels as a node in a graph and that all these nodes are connected by different means. Thus, the idea is to enforce the assignment of similar labels to adjacent pixels. The usefulness of this kind of structure could be justified by the classification of areas instead of independent pixels. Thus, this architecture allows to keep a coherent structure and reduce the aberrations of segmentations with nested classes. In addition, fcCRFs shows great performances with regard to the edges and the object separation.
 The contribution of the CRF conveys enormous complexity to the network, but some demonstrations \cite{krahenbuhl2011efficient} has made it possible to remove certain constraints and thus make this type of structure viable.
-It is nevertheless considerable this brings a great number of additional parameters and especially increases the complexity of the networks.
-To conclude on this architecture that is DeepLab, it remains to this day (with its declensions) the state-of-the-art method for segmentation. Some networks highlight better class-wise performances but include a cost and a disproportionate complexity compared to the difference in efficiency.
+It is nevertheless considerable that this brings a great number of additional parameters and especially increases the complexity of the networks.
+To conclude on this architecture, it remains to this day (with its declensions) the state-of-the-art method for segmentation. Some networks highlight better class-wise performances but include a cost and a disproportionate complexity compared to the difference in efficiency.
 
 \subsection{Conclusion and discussion}\label{seg4}
 
-After briefly explaining the major backbones and their main derived segmentation architecture, it was illustrated that learning-based segmentation has been a flagship field in computer vision. The recorded performances presented in the comparative study are far superior to observations prior to the advent of deep learning. However, it is possible to see this field is almost at the end of its course since the performances tend to stagnate and the research to move towards other processes of understanding. The emergence of instance segmentation or geometric understanding of scenes tends to reduce the amount of contribution in PwSS.
+After briefly explaining the major backbones and their main derived segmentation architectures, it was illustrated that learning-based segmentation has been a flagship field in computer vision. The recorded performances presented in the comparative study are far superior to observations prior to the advent of deep learning. However, it is possible to see that this field is almost at the end of its course since the performances tend to stagnate and the research to move towards other processes of understanding. The emergence of instance segmentation or geometric understanding of scenes tends to reduce the amount of contribution in PwSS.
 
-Despite this observation, it is also quite possible to note the algorithms are subject to the same constraints as any deep learning algorithm, namely the need for data. Plus, an overwhelming majority classify colorimetric images and assume these data are thoroughly characteristic of the observed scenes. There is a considerable knowledge in the field of segmentation, but it has rarely been exported to other types of data to see if the performance on similar tasks can be improved by a strategic use of the data.
+Despite this observation, it is also quite possible to note that the algorithms are subject to the same constraints as any deep learning algorithm, namely the need for data. Plus, an overwhelming majority classify colorimetric images and assume these data are thoroughly characteristic of the observed scenes. There is a considerable knowledge in the field of segmentation, but it has rarely been exported to other types of data to see if the performance on similar tasks can be improved by a strategic use of the data.
 Hence, the answer might not be to depend on the depth and number of layers of the network but to shift the data space to something more characteristic. 
 %----------------------------------------------------------------------------------------
 \pagebreak
 \section{Depth Estimation}\label{soa-de}
 
-In this section of the literature review, various concepts related to depth will be discussed. Starting from the principal acquisition technology in part \ref{depth-acqu}, we will continue on the learning-less methods for depth estimation in part \ref{multi-im}.
-Ultimately, we will more deeply discuss the concept of learning-based depth estimation from a monocular in part \ref{mono-im} since this is the topic on which part of this manuscript is devoted.
+In this section of the literature review, various concepts related to depth estimation will be discussed. Starting from the principal acquisition technology in part \ref{depth-acqu}, we will continue on the learning-less methods for depth estimation in part \ref{multi-im}.
+Ultimately, we will more deeply discuss the concept of learning-based depth estimation from a single view in part \ref{mono-im} since this is the topic to which part of this manuscript is devoted.
 
 
 \subsection{Laser-based imaging}\label{depth-acqu}
 
-Laser-based imaging is a frequently used method for its accuracy and robustness. Indeed, it allows, regardless of the conditions of illumination or distance, to accurately estimate the distance sensor-object using a laser projection.
+Laser-based imaging is a frequently used method for its accuracy and robustness. Indeed, it allows, regardless of the conditions of illumination or distance, to accurately estimate the distance between the sensor and an object using a laser projection.
 There is a wide variety of different sensors, and their performance is highly correlated with their price. Indeed, while some devices allow a smooth acquisition of several thousand points or at distances of several hundred meters, others are relatively limited in capacity. Despite this, the overall acquisition principle remains the same and is uninfluenced by this disparity in performance.
-The concept is considerably classic, a laser is projected on a surface that will then reflect it. As follows, it is possible to calculate the distance by measuring the time elapsed between the emission and reception. 
+The concept is considerably classic, a laser is projected on a surface that will then reflect it (back-scattering). As follows, it is possible to calculate the distance by measuring the time elapsed between the emission and reception. 
 However, the whole principle is based on reflection. As a result, this approach can be inefficient especially when the target scenes include specular surfaces \cite{hrabar2012evaluation} (e.g. mirrors, glass, water, and other reflective surfaces).
-It also turns out these sensors can be made deficient in adverse weather conditions. In particular when the projected laser can be refracted in rainy weather or altered in foggy weather.
+It also turns out that these sensors can be made deficient in adverse weather conditions. In particular when the projected laser can be refracted in rainy weather or altered in foggy weather.
 Conversely, few approaches are as robust in favorable meteorological circumstances. Therefore, most datasets containing target depth maps use laser-based imaging like KITTI\cite{Geiger2012CVPR,Menze2015CVPR,Fritsch2013ITSC} and its LiDaR setup. But, the data contain a bias since they were acquired mainly in favorable conditions.
 
 \begin{figure}[h]
@@ -359,22 +353,22 @@ Conversely, few approaches are as robust in favorable meteorological circumstanc
 
 
 The LiDar, \emph{laser imaging, detection, and ranging}, is a laser rangefinder commonly used since it is motorized and rotatable \cite{wang20133d}. Rotating at 360$^\circ$ at a considerable speed, it allows to make panoramic acquisitions. Moreover, LiDaR are classified according to their number of slices, which gives them, not only a horizontal but also a vertical acquisition. Thus, the more slices, the more vertical points are acquired "semi-simultaneously".
-As shown in Figure\ref{lidar-ill}\footnotetext{Image borrowed from \url{henryzh47.github.io}}, the generated point cloud can be affixed to the colorimetric image corresponding to the scene. This illustration also highlights the defects related to specular surfaces, here, the vehicle windows.
+As shown in Figure\ref{lidar-ill}\footnotetext{Image borrowed from \url{henryzh47.github.io}}, the generated point cloud can be affixed to the color image corresponding to the scene. This illustration also highlights the defects related to specular surfaces, here, the vehicle windows.
 
-In spite of this considerable estimation power, it should be noted that this operation contains flaws of which two critical ones are identifiable. The acquisition of moving objects, especially if the relative speed between sensor and target is high, can be very inaccurate. The second drawback comes directly from the acquisition technology. A multitude of points is projected in the surrounding space. As previously discussed, even if it depends on the size of the pattern, only points are acquired \cite{vaze2007high}. As a consequence, the deduced point clouds are very sparse, and this factor is aggravated by the distance between an object and the sensor (visible in Figure\ref{lidar-ill}). As a result, the depth maps are sparse or subject to interpolation to fill this sparsity.
+It should be noted that this operation contains flaws of which two critical ones are identifiable. The acquisition of moving objects, especially if the relative speed between sensor and target is high, can be very inaccurate. The second drawback comes directly from the acquisition technology. A multitude of points is projected in the surrounding space. As previously discussed, even if it depends on the size of the pattern, only points are acquired \cite{vaze2007high}. As a consequence, the deduced point clouds are very sparse, and this factor is aggravated by the distance between an object and the sensor (visible in Figure\ref{lidar-ill}). As a result, the depth maps are sparse or subject to interpolation to fill this sparsity.
 
-In conclusion, LiDaR remain a robust tool for scene depth estimation. Regrettably, this device can be expensive or inefficient. As a result, the Computer Vision community tends to find estimation algorithms at the expense of this scanner and its drawbacks.
+In conclusion, LiDaR remains a robust tool for scene depth estimation. Regrettably, this device can be expensive or inefficient. As a result, the Computer Vision community tends to find estimation algorithms and consequently to avoid this scanner and its drawbacks.
 
 \subsection{Multi-image methods}\label{multi-im}
 
 Multi-image based depth estimation methods have been developed for several purposes. One of the main ones is the access to this kind of technique since it does not require a complex acquisition system. Indeed, standard cameras can be used to recover the depth. 
 
-These algorithms can be separated in two main parts: Multiple camera systems described in part \ref{mcs}, and Single camera systems in part \ref{scs}.
+These algorithms can be classified into two main groups: Multiple camera systems described in part \ref{mcs}, and Single camera systems in part \ref{scs}.
 
 \subsubsection{Multiple camera systems}\label{mcs}
 One of the best-known approaches in the field of multi-camera systems is stereovision. Highly inspired by human biology\cite{marr1979computational}, this technique consists in the use of two cameras similarly to the eyes.
 
-From this acquisition system, two different points of view are obtained and then allow the matching of points of interest. The concept is based on the transposition of points from a three-dimensional space to a two-dimensional image plane.
+From this acquisition system, two different points of view are obtained and then allow the matching of points of interest. The concept is based on the projection of points from a three-dimensional space to a two-dimensional image plane.
 Hence, starting from a 3D point with homogeneous coordinates, it is possible to transpose it into the image frame such that:
 
 \begin{equation}
@@ -385,7 +379,7 @@ Hence, starting from a 3D point with homogeneous coordinates, it is possible to 
 	\end{pmatrix},
 \end{equation}
 
-with $(x,y,1)^T$ the 2D coordinates and $(X,Y,Z,1)^T$ the 3D coordinates with both ones the scale parameter of the point. Plus, $k$ represents the scale factor and $P$ the projection matrix.
+with $(x,y,1)^T$ the 2D coordinates and $(X,Y,Z,1)^T$ the 3D coordinates. Plus, $k$ represents the scale factor and $P$ the projection matrix.
 
 $P$ is a constraining matrix that contains the intrinsic parameters of the camera and the extrinsic parameters. 
 These two parameters are respectively the proper properties of the camera independent of any external factor, and the information necessary for the positioning of the camera in the world frame like a $3x3$ rotation matrix and a $3x1$ translation vector.
@@ -404,7 +398,7 @@ To find these two parameters, P is decomposed as follows:
 	\end{pmatrix}}_E.
 \end{equation}
 
-In this manner, it is possible to retrieve the intrinsic parameters matrix $K$ composed of: $f_x$ and $f_y$ the oriented focal distance in the image, and ($x_0$,$y_0$) the centroptic coordinates in the image frame. In addition, we can recover the rotation matrix $R$ as well as the translation vecotr $t$ with respect to the world frame in the extrinsic parameters matrix $E$. Note, the constraining aspect of $P$ comes from the necessity of these parametric matrices $\{K,E\}$ since this implies a calibration of the system.
+In this manner, it is possible to retrieve the intrinsic parameters matrix $K$ composed of: $f_x$ and $f_y$ the oriented focal distance in the image, and ($x_0$,$y_0$) the optical center coordinates in the image frame. In addition, we can recover the rotation matrix $R$ as well as the translation vector $t$ with respect to the world frame in the extrinsic parameters matrix $E$. Note, the constraining aspect of $P$ comes from the necessity of these parametric matrices $\{K,E\}$ since this implies a calibration of the system.
 
 \begin{figure}[h]
 	\centering
@@ -417,12 +411,12 @@ In this manner, it is possible to retrieve the intrinsic parameters matrix $K$ c
 		\centering
 		\includegraphics[width=\linewidth]{Figures/SOA/ssd-depth-768x432.png}
 	\end{subfigure}
-	\caption[Intel RealSense acquisition and reconstruction example.]{Intel RealSense acquisition and reconstruction example. Top row is the rectified images from the camera, bottom row is the obtained reconstruction.}
+	\caption[Intel RealSense acquisition and reconstruction example.]{Intel RealSense acquisition and reconstruction example. Top row shows the rectified images from the camera, bottom row shows the obtained reconstruction.}
 	\label{intel}
 \end{figure}
 
-Conversely, as soon as the sine qua non camera calibration condition is verified, these equations are solvable. This allows us to find the coordinates of 3D points as long as we can identify them in the two or $N$ views. Hence, whether the system is binocular in stereovision as shown in Figure \ref{intel}, or whether the cameras are multiplied in a multi-view system, the problem is reduced to the matching of points identifiable through different views.
-As proves \cite{bensrhair1996fast,banks2001quantitative,scharstein2002taxonomy,gehrig2009real} for stereovision, or \cite{hartley1994projective,hartley2000zisserman,campbell2008using} for multiple view reconstruction, this domain has been thoroughly investigated.
+Conversely, as soon as the intrinsic and extrinsic parameters are known, this system is solvable. This allows us to find the coordinates of 3D points as long as we can identify them in the two or $N$ views. Hence, whether the system is binocular in stereovision as shown in Figure \ref{intel}, or whether the cameras are multiplied in a multi-view system, the problem is reduced to the matching of points identifiable through different views.
+As proved in \cite{bensrhair1996fast,banks2001quantitative,scharstein2002taxonomy,gehrig2009real} for stereovision, or in \cite{hartley1994projective,hartley2000zisserman,campbell2008using} for multiple view reconstruction, this domain has been thoroughly investigated.
 Over the years, the research community oriented these approaches towards the real time / online estimation through FPGA embedding \cite{banz2010real}, optimization improvements \cite{kolmogorov2002multi, michael2013real,rodriguez2017improve} or even speed enhancements \cite{feng2019asv}.
 
 Since the system is identified from the stage where it is calibrated, and thus the problem relies almost solely on matching, then many feature differentiation methods have emerged to advance the field.
@@ -450,7 +444,7 @@ Thus, different information extraction approaches such as: brightness-based \cit
 	\label{illu-wood}
 \end{figure}
 
-However, to deepen only one contribution, Woordford et al. \cite{Woodford2008GlobalPriors} proposed new optimization approaches leading to leveraging graph cuts to relief surface-orientation major constraint. Therefore, while previous algorithms were struggling while addressing non-fronto-parallel surfaces, they succeeded into integrating second order derivatives leading to more accurate and reliable depth maps. Thus, this method allowed smoother and more precise surface reconstruction in realistic conditions. As shown in Figure \ref{illu-wood}, depth estimation became finer as \cite{Woodford2008GlobalPriors} has been used.
+However, to highlight only one contribution, Woordford et al. \cite{Woodford2008GlobalPriors} proposed new optimization approaches leading to leveraging graph cuts to relax surface-orientation major constraint. Therefore, while previous algorithms were struggling when addressing non-fronto-parallel surfaces, they succeeded into integrating second order derivatives leading to more accurate and reliable depth maps. Thus, this method allowed smoother and more precise surface reconstruction in realistic conditions. As shown in Figure \ref{illu-wood}, depth estimation became finer as \cite{Woodford2008GlobalPriors} has been used.
 
 Despite of all the numerous contributions on the multi-image concept and the considerable reconstructions accuracy, still some significant drawbacks subsist. First, as it was discussed above, the calibration aspect represents a key constraint for the acquisition system as well as its deployability. Secondly, as it was highlighted, even if a considerable amount of approaches focuses on features recognition, stereo matching by definition requires features. Unfortunately, the acquisition may observe textureless areas which leads to unsolvable problem. 
 Last, the acquisition system requires two or more cameras, and this by essence could be problematic. In response, some methods lift this last constraint by operating a single camera.
@@ -458,7 +452,7 @@ Last, the acquisition system requires two or more cameras, and this by essence c
 \subsubsection{Single camera systems}\label{scs}
 
 Depth estimation from a unique image prevents material constraints but raises other questions. Indeed, the use of such a setup prevents the use of triangulation made possible by the use of multiple sensors.
-Therefore, innovative approaches named Shape-from-X (SfX) have emerged. In this framework, X represents several possible cues like motion\cite{caine1993design,dellaert2000structure,chhatkuli2014non,parashar2016isometric}, shading\cite{horn1986variational,zhang1999shape}, blur\cite{favaro2005geometric,zhuo2009recovery}, texture variation \cite{aloimonos1988shape} etc.
+Therefore, innovative approaches named Shape-from-X (SfX) have emerged. In this framework, X represents several possible cues like motion\cite{caine1993design,dellaert2000structure,chhatkuli2014non,parashar2016isometric}, shading\cite{horn1986variational,zhang1999shape}, blur\cite{favaro2005geometric,zhuo2009recovery}, texture variation \cite{aloimonos1988shape}, polarization \cite{morel2006active,stolz2012shape} etc.
 
 As a deepened example, Favaro and Soatto \cite{favaro2005geometric} proposed a original approach to benefit from de-focus phenomenon. 
 
@@ -503,7 +497,7 @@ to estimate the 3D geometry of the scene. As shown in Figure \ref{illufavaro}, w
 More recently, Parashar et al. \cite{parashar2016isometric} contributed in the field of shape-from-motion. They propose addressing \emph{Isometric Non-Rigid Shape-from-Motion} which consists of reconstructing a non-rigid object observing shape variation over time. To accomplish such a task, they introduce Riemmanian manifolds-based\cite{lee2006riemannian} representation of the deformable 3D surface. To such a degree, they succeed into modelizing the warps applied to the non-rigid object over time. As shown in Figure \ref{illuparshar}, the proposed method showed increased performances compared to \cite{chhatkuli2014non}.
 
 
-Despite all these advanced methods, it is considerable that the computational complexity of such algorithms is extremely high. As the sophistication of the algorithms increases, the performance and usability suffer.
+Despite all these advanced methods, it is considerable that the computational complexity of such algorithms is extremely high. As the complexity of the algorithms increases, the performance and usability suffer.
 
 
 
@@ -513,7 +507,7 @@ However, the arrival of learning with the growth of computational power has allo
 \subsection{Learning-based monocular depth estimation}\label{mono-im}
 
 In the previous section, we saw it was possible, from several images, whether from one or more cameras, to estimate a depth map. However, each method based on "standard image processing" contains considerable drawbacks. 
-With the advent of Deep Learning, many codes has been turned upside down and depth estimation is no exception. Indeed, in essence, learning should relax the constraints by taking advantage of a massive amount of computation. 
+With the advent of Deep Learning, many fields have changed and depth estimation is no exception. Indeed, in essence, learning should relax the constraints by taking advantage of a massive amount of data and computation. 
 
 These learning-based methods can be divided into two distinct parts, (semi-)supervised learning and self-supervised learning, which will be explained in parts \ref{ssl} and \ref{usl} respectively.
 
@@ -545,7 +539,7 @@ The contribution is twofold, firstly the cascade network of which the first one,
 \end{figure}
 
 This fact implies the sacrifice of the categorization of local features in favor of a learning of global features. Consequently, this part removes the invariance pose to densify the intermediate latent space.
-In a second step, the scale-invariant error allows to introduce a further dimension to the learning. Rather than considering the pixel correspondence by simply using an absolute error, this function allows to partially force the depth relation between pixels. In consequence, the proposed approach is no longer considered as a classification at the pixel level but as an estimation of the depth of the image.
+In a second step, the scale-invariant error allows to introduce a further dimension to the learning. Rather than considering the pixel correspondence by simply using an absolute error, this function allows to partially force the depth relation between pixels. As a consequence, the proposed approach is no longer considered as a classification at the pixel level but as an estimation of the depth of the image.
 As shown in the Figure \ref{ref-eigen}, the results obtained are impressive and above all will set the state of the art for the field by exceeding all previous performances regardless of the outdoor or indoor environment.
 
 
@@ -556,26 +550,26 @@ Another approach is Roy and Todorovic's \cite{roy2016monocular} proposing CNN em
  
 \cite{xu2017multi} investigate even more on CRF by introducing a multi-scale dimension to the estimation. Therefore, they created dedicated C-MF blocks which allows multi-scale fusion through the whole process. In consequence, this contribution proved an extensive performance exceeding all the previously cited works.
 
-In addition, as an one-of-a-king approach, \cite{cao2017estimating} proposed to formulate the problem of depth estimation as a pixel-wise classification (can be assimilated as PwSS) problem. Indeed, they suggested the learning task is easier as formulated. As a finality, a CRF is applied to refine the map through local coherency reinforcement.
+In addition, as an one-of-a-kind approach, \cite{cao2017estimating} proposed to formulate the problem of depth estimation as a pixel-wise classification (can be assimilated as PwSS) problem. Indeed, they suggested the learning task is easier as formulated as a segmentation problem. As a finality, a CRF is applied to refine the map through local coherency reinforcement.
 
 To cite a few other semi-supervised approaches, \cite{guo2018learning,kundu2018adadepth,fu2018deep,klodt2018supervising}, have all contributed to the growth of the field. 
 Whether using a stereovision-based approach, adversarial learning, an ordinal regression formulation or a supervised SfM pre-computation, these methods require at least an intermediate depth estimation step. 
 
 A trend can be observed in the evolution of the field of (semi-)supervised depth estimation. Over the years, the algorithms have benefited from hardware support which has made it possible to evaluate such algorithms, despite their increasing complexity. In contrast, in addition to this prevailing tendency, each of these methods shares a common disadvantage. Indeed, they require a massive amount of annotated data and moreover, these datasets in addition to being consequent must be representative. 
-Moreover, most datasets have annotations that depend on the acquisition process. As expressed in part \ref{depth-acqu}, and to consider the example of KITTI, LiDaR is not infallible, especially in urban areas which contain many specular or refractive areas. As follows, when one supervises an algorithm with erroneous data, the model is necessarily influenced.
+Moreover, most datasets have annotations that depend on the acquisition process. As expressed in part \ref{depth-acqu}, and to consider the example of KITTI, LiDaR is not providing perfect acquisition, especially in urban areas which contain many specular or refractive areas. As follows, when one supervises an algorithm with erroneous data, the model is necessarily influenced.
 
 As a consequence, alternative self-supervised approaches have been developed to emancipate from annotation through a loss that does not require external information.
 
 \subsubsection{Self-supervised learning}\label{usl}
 
-Self-supervised depth estimation represent an extensively active domain in recent years. The concept comes from an observation concerning prior methods: the necessity of a ground truth is extremely restrictive. As mentioned before, in some cases the targets are unreliable enough and their acquisition is expensive.
-This field has even metamorphosed from another estimation method to the desire to create labels. In this manner, the ambition of this kind of algorithm is to equal or even surpass the performance of sensors allowing a direct acquisition of this physical information that is the sensor-object distance.
-The primary concept is based on the same principles as standard self-supervised learning, i.e. a generalizing, discriminating and differentiating cost function, but also on the necessity of ground truth only for quantitative evaluation. Hence, the algorithms are independent and can exclusively refer to the information they receive or produce to deduce the result by optimizing the loss function.
+Self-supervised depth estimation represents an extensively active domain in recent years. The concept comes from an observation concerning previous methods: the necessity of a ground truth is extremely restrictive. As mentioned before, in some cases the targets are unreliable enough and their acquisition is expensive.
+This field has even changed its purpose from another estimation method to ground truth generation. In this manner, the ambition of this kind of algorithm is to equal or even surpass the performance of sensors allowing a direct acquisition of this physical information that is the sensor-object distance.
+The primary concept is based on the same principles as standard self-supervised learning, i.e. a generalizing, discriminating and differentiating cost function, but also on the necessity of ground truth only for quantitative evaluation. Hence, the algorithms are not relying on external annotated data and can exclusively refer to the information they receive or produce to deduce the result by optimizing the loss function.
 
 Fundamentally, the cost functions are similar across algorithms. They predominantly consist of the assembly of several terms of which two are extensively present: the reconstruction term and the smoothing term.
 
 In this section, we will address two diverse types of algorithms: self-supervised stereo-based supervision and self-supervised monocular-based supervision. In the repertoire presented here, we will consider that the method is considered monocular if its inference is made monocularly. Consequently, some algorithms requiring two views for the learning period will remain valid for our selection criteria. 
-In addition, a quantitative evaluation sub-part will display the different algorithm performances on the KITTI dataset's eigen split. This benchmark remain the reference in the domain as well as being freely available since it represents the comparison sample for the community.
+In addition, a quantitative evaluation sub-part will display the different algorithms performances on the KITTI dataset's eigen split. This benchmark remains the reference in the domain as well as being freely available since it represents the comparison sample for the community.
 Last, the last sub-part will summarize and draw conclusions on the field to position the contributions of this manuscript in this research landscape.
 
 \textbf{Self-supervised stereo-based. } This subpart of monocular depth estimation relies on a key point which is the training with a stereo image pair. These approaches are almost all based on the principles mentioned in section 1, with the difference that the processing core is a DL network and that consequently the loss and the images are sized for this computing node. 
@@ -598,7 +592,7 @@ One year after, \cite{godard2017unsupervised} brings the left-right consistency 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.8\linewidth]{Figures/SOA/illugod1}
-	\caption[Godard et al. qualitative results.]{Godard et al. qualitative results.}
+	\caption[Godard et al. qualitative results.]{Godard et al. \cite{godard2017unsupervised} qualitative results. Rows from top top bottom shows the input data, ground truth and estimates. }
 	\label{illugod1}
 \end{figure}
 
@@ -611,13 +605,13 @@ Investigating a radically different proposal, \cite{mehta2018structured} suggest
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.8\linewidth]{Figures/SOA/illumehta}
-	\caption[Mehta et al. GAN Architecture.]{Mehta et al. GAN Architecture.}
+	\caption[Mehta et al. GAN Architecture.]{Mehta et al. \cite{mehta2018structured} GAN Architecture.}
 	\label{illumehta}
 \end{figure}
 
-The concept of GAN initially consists in the synthetization of photo-realistic images. Within the framework of this approach, it is a question of transposing the space of the colorimetry to the depth. Consequently, the discriminator is improved to ensure a valid estimation. To do so, the task of this network is to distinguish whether a generated view is plausible with reference to the real image collection. Once this network is valid, Mehta et al. train the generator that will produce the depth images using a camera-transformation matrix provided. Finally, the competition of these two agent networks with the help of the associated losses largely inspired by \cite{godard2017unsupervised} 
+The concept of GAN initially consists in the synthetization of photo-realistic images. Within the framework of this approach, the goal is to transpose the space of the colorimetry to the depth. Consequently, the discriminator is improved to ensure a valid estimation. To do so, the task of this network is to distinguish whether a generated view is plausible with reference to the real image collection. Once this network is valid, Mehta et al. \cite{mehta2018structured} train the generator that will produce the depth images using a camera-transformation matrix provided. Finally, the competition of these two agent networks with the help of the associated losses largely inspired by \cite{godard2017unsupervised} 
 ultimately allow inferring an accurate depth map.
-It is notable that usually this kind of method based on photorealism generation tends to fail when it comes to generalization. In spite of this fact, \cite{mehta2018structured} was able to show strong generalization capabilities which implicitly means that a physics norm has been infused into the network.
+It is notable that usually this kind of method based on photorealism generation tends to fail when it comes to generalization. In spite of this fact, \cite{mehta2018structured} was able to show strong generalization capabilities which implicitly means that a physics norm has influenced the network.
 
 
 To complete this review of various stereo-based methods, we propose a discussion of the trinocular assumption based system from Poggi et al.\cite{poggi2018learning}. 
@@ -633,8 +627,8 @@ To complete this review of various stereo-based methods, we propose a discussion
 This approach is mainly inspired by the different drawbacks of the previously mentioned methods. Indeed, the stereo systems suffer from the same constraints as the acquisition system. Occlusion, object boundaries and left image borders represent a significant challenge for these algorithms. Counteracting, \cite{poggi2018learning} proposes to emulate two views using the input as central image instead of one (for the stereo setup). As shown in Figure \ref{illupoggi}, the effect of such a procedure is, in addition to improving the accuracy, to eliminate the defects of the stereo system.
 
 
-Many defects are present due to the use of a stereo based training procedure. Some have been reported like inconsideration of the occlusion or erroneous estimates due to second view hallucination.
-In spite of this, these methods have reported results that have successively become references in the field. However, one factor remains crucial: the data. The chief drawback of such methods remains the training requirements. The use of an image pair, in addition to introducing constraints, is heavy and not necessarily available. Also, the necessary acquisition system is necessarily more constraining.
+Many limitations are present due to the use of a stereo based training procedure. Some have been reported like inconsideration of the occlusion or erroneous estimates due to second view hallucination.
+In spite of this, these methods have reported results that have successively become references in the field. However, one factor remains crucial: the data. The main drawback of such methods remains the training requirements. The use of an image pair, in addition to introducing constraints, is heavy and not necessarily available. Also, the necessary acquisition system is necessarily more constraining.
 This is one of the major reasons why other methods requiring only one camera have been developed. Thus, the core concept of monocular estimation is no longer limited to the inference process but also to the training process.
 
 \textbf{Self-supervised monocular-based. }Now that different stereo-based methods have been discussed, it is possible to shift towards monocular approaches which are nevertheless increasingly widespread.
@@ -649,7 +643,7 @@ As a first outstanding contribution, \cite{zhou2017unsupervised} proposed to exp
 	\label{illuzhou2017}
 \end{figure}
 
-As shown in Figure \ref{illuzhou2017}, they allowed an advance towards a unified framework composed of two networks. One network estimates the depth from a first view at time $t$. A second network then tries to determine the displacement between this first view $I_t$ and a second one at time $t+1$ denoted $I_{t+1}$. Thus, similar to the no-learning-involved approach, this displacement $\{R,t\}$ allows the inverse deformation of the secondary image(s). Since a depth map and a camera pose are estimated, it is possible to project an image $I_{t+1}$ on the source view $I_{t}$. Thus, this deformation allows computing a photometric error between the projected views and the target image. Zhou et al. also emphasized some limitations of these architectures and proposed a set of overcomes. They determine a recurrent and problematic situation is the low-texture regions. Their solution is then based on approaches making the same observation (e.g. \cite{garg2016unsupervised},\cite{godard2017unsupervised}). They then propose to use an explicit multi-scale approach by forcing it directly into the network. Then, they explain in the cost function a weighted smoothing term. From these two actions, the gradient errors emanating from textureless regions are reduced and allow a perennial optimization. \cite{zhou2017unsupervised} also define a set of rules that allow the definition of operating cases.Thus, they determine that the scene must not present any moving object, not compoter any (dis)occlusion and observing only Lambertian surfaces. These three assumptions guarantee a sane gradient. 
+As shown in Figure \ref{illuzhou2017}, they allowed an advance towards a unified framework composed of two networks. One network estimates the depth from a first view at time $t$. A second network then tries to determine the displacement between this first view $I_t$ and a second one at time $t+1$ denoted $I_{t+1}$. Thus, similar to the no-learning-involved approach, this displacement $\{R,t\}$ allows the inverse deformation of the secondary image(s). Since a depth map and a camera pose are estimated, it is possible to project an image $I_{t+1}$ on the source view $I_{t}$. Thus, this deformation allows computing a photometric error between the projected views and the target image. Zhou et al. also emphasized some limitations of these architectures and proposed a set of overcomes. They determine a recurrent and problematic situation is the low-texture regions. Their solution is then based on approaches making the same observation (e.g. \cite{garg2016unsupervised},\cite{godard2017unsupervised}). They then propose to use an explicit multi-scale approach by forcing it directly into the network. Then, they explain in the cost function a weighted smoothing term. From these two actions, the gradient errors emanating from textureless regions are reduced and allow a sustainable optimization. \cite{zhou2017unsupervised} also define a set of rules that allow the definition of operating cases.Thus, they determine that the scene must not present any moving object, not contain any (dis)occlusion and observing only Lambertian surfaces. These three assumptions guarantee a sane gradient. 
 These rules are critical since these problems will either be addressed in the next contributions described below or in the manuscript presented here.
 
 
@@ -672,13 +666,13 @@ This method also introduces a novel game-changing approach allowing to filter th
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.8\linewidth]{Figures/SOA/mahjourian-illu}
+	\includegraphics[width=\linewidth]{Figures/SOA/mahjourian-illu}
 	\caption[Mahjourian et al. Qualitative evaluation compared to previous methods..]{Mahjourian et al.\cite{mahjourian2018unsupervised} Qualitative evaluation compared to previous methods.}
 	\label{mahjourian-illu}
 \end{figure}
 
 
-As shown in Figure \ref{mahjourian-illu}, their qualitative study highlights performance exceeding previous completions. \cite{mahjourian2018unsupervised} also demonstrates quantitatively, on the Kitti Eigen split benchmark, their performance is superior to previous approaches, despite a complexified loss.
+As shown in Figure \ref{mahjourian-illu}, their qualitative study highlights performance exceeding previous results. \cite{mahjourian2018unsupervised} also demonstrates quantitatively, on the Kitti Eigen split benchmark, their performance is superior to previous approaches, despite a complexified loss.
 
 
 The same year, GeoNet \cite{yin2018geonet} emerges and allows a triple estimation: the dense depth, the optical flow and the camera pose. To focus on the depth, the architecture named \emph{rigid structure reconstructor} is remarkably similar with the difference that they add a third block named \emph{non-rigid motion localizer} (see Figure \ref{geonet}).
@@ -696,7 +690,7 @@ While their architecture \emph{rigid structure reconstructor} suffers from the s
 
 
 \cite{wang2018learning} proposes an originality by claiming that estimation does not necessarily require a learnable pose predictor. Indeed, this contribution proposes relying on the principles of \emph{direct visual odometry} (DVO) to eliminate this sub-architecture to estimate the displacement between two views.
-Thus, the addition of a DVO \cite{steinbrucker2011real} pose predictor is used to replace the usual PoseCNN. Since it does not require training, it provides an established relationship between the estimated pose and the depth map. Moreover, this addition does not require any increased effort since it can be derived directly from the reconstructed image which equally serves as a discriminant for the DCNN. This proof of concept opened up the field of possibilities by outlining the possibility to eliminate blocks deemed essential while obtaining precise performance. 
+Thus, the addition of a DVO \cite{steinbrucker2011real} pose predictor is used to replace the usual PoseCNN. Since it does not require training, it provides an established relationship between the estimated pose and the depth map. Moreover, this addition does not require any additional effort since it can be derived directly from the reconstructed image which equally serves as a discriminant for the DCNN. This proof of concept opened up the field of possibilities by outlining the possibility to eliminate blocks deemed essential while obtaining precise performance. 
 
 
 Very similar to GeoNet\cite{yin2018geonet}, \cite{zou2018df} proposes an approach of joint estimation of depth and optical flow. The approach is slightly distinct since the architecture is drastically different. As shown in Figure \ref{illuzhou2018}, where GeoNet requires only two dissociable pipelines, DF-Net requires four. To summarize, as traditionally, a map is generated using a PoseCNN and auto-encoders allowing the evaluation of a depth consistency loss. In a second estimation pipeline, the pose estimate and the two estimated maps are aggregated to derive two maps respectively forward flow and backward flow. Ultimately, a flow is estimated from the two initial views and these same two maps can be estimated using a FlowNet. Ultimately, flow maps are deduced from the region of interest masks.
@@ -710,10 +704,10 @@ Very similar to GeoNet\cite{yin2018geonet}, \cite{zou2018df} proposes an approac
 
  
 All this information can be combined and compared using different terms. The \emph{Forward-backward Depth Consistency Loss} is used to ensure the consistency of forward and backward estimates. A smoothing term imposes smooth transitions while preserving the object boundaries. A photometric error is based on the assumption of brightness constancy and allows an evaluation between initial view and projection. And finally, \emph{Cross-task consistency} discriminates the differences between the optical flows estimated from the so-called rigid depth maps, and those estimated by the FlowNet. 
-This method, with all the tools deployed, allows to jointly and precisely estimate a refined depth map and an optical flow. On the other hand, it is considerable the method described here represent a complicated version of GeoNet. However, the \textbf{Evaluation} sub-part will demonstrate Zou et al.'s method is slightly more efficient in estimating a depth map.
+\cite{zou2018df}, with all the tools deployed, allows to jointly and precisely estimate a refined depth map and an optical flow. On the other hand, it is considerable that the method described here represent a complicated version of GeoNet. However, the \textbf{Evaluation} sub-part will demonstrate Zou et al. \cite{zou2018df} method is slightly more efficient in estimating a depth map.
 
 
-Yang et al. \cite{yang2018lego} promoted the principle of edge learning with their method called LEGO. It is based on the observation that any planar surface does not have edges until they are at the boundary of it which is similar to image processing based approaches. This allows them to define surfaces based on the absence of visual cues - here the edges -. As a consequence, it is possible to force the normals to follow the same direction for a defined surface. Based on this concept, this contribution observes a similar architecture, in two blocks, one for the depth and the other for the pose, and adds a third decoder dedicated to the edges.
+Yang et al. \cite{yang2018lego} promoted the principle of edge learning with their method called LEGO. It is based on the observation that any planar surface does not have edges until they are at the the surface's boundary of it which is similar to image processing based approaches. This allows them to define surfaces based on the absence of visual cues - here the edges -. As a consequence, it is possible to force the normals to follow the same direction for a defined surface. Based on this concept, this contribution observes a similar architecture, in two blocks, one for the depth and the other for the pose, and adds a third decoder dedicated to the edges.
 Thus, employing their priors, the loss becomes a four-term minimizable function using in turn the boundary map, the depth map and the \emph{fly-out mask} allowing to eliminate the pixels not remaining in the target view due to the displacement between acquisitions. An illustration of their architecture is available below in Figure \ref{yang2018illu}.
 
 \begin{figure}[h]
@@ -737,7 +731,7 @@ Following with another optical flow computation based approach, EPC++ \cite{luo2
 \end{figure}
 
 
-As shown in Figure \ref{illuepc}, this contribution opts for the use of three parallel networks each with a specific and differentiable task. A MotionNet encoder deduces the pose and two auto-encoders estimate the depth and the optical flow respectively. These three pieces of information, once given to what the authors designate an \emph{Holistic 3D Motion Parser}, allow to compute a segmentation mask for moving objects, an occlusion mask, and two 3D motion maps, one for the background, the other for the moving objects. This modeling allows to regress a precise depth map. Luo et al. also prove a network can learn to understand 3D motion at the pixel level, which emphasizes a high level of knowledge. The displayed performances show that a 3D geometry and motion concepts infused networks outperforms all previous methods.
+As shown in Figure \ref{illuepc}, this contribution opts for the use of three parallel networks each with a specific and distinguishable task. A MotionNet encoder deduces the pose and two auto-encoders estimate the depth and the optical flow respectively. These three pieces of information, once given to what the authors designate an \emph{Holistic 3D Motion Parser}, allow to compute a segmentation mask for moving objects, an occlusion mask, and two 3D motion maps, one for the background, the other for the moving objects. This modeling allows to regress a precise depth map. Luo et al. also prove a network can learn to understand 3D motion at the pixel level, which emphasizes a high level of knowledge. The displayed performances show that a 3D geometry and motion concepts influenced networks outperforms all previous methods.
 
 
 In the same year as Luo et al. \cite{luo2019every}, Casser et al. \cite{casser2019depth} proposed a method with an original feature.This concept is based on a question: "What if 3D motion was modeled and used to refine a network on the fly? ". This method is motivated by the use of such estimators in an autonomous system. The authors subsequently propose adapting the estimation model in operation.
@@ -752,7 +746,7 @@ This contribution is based on the same setup as the significant contributions di
 \end{figure}
 
 
-Neglecting this online approach, Monodepth v2 \cite{godard2019digging} is one of the best-known contributions of the community in this field. In fact, it represents, even today, the state-of-the-art in terms of robust depth map estimation. Godard et al. had in the past proposed an outstanding contribution that allowed a great advance. However, this previous method suffered from multiple flaws, one of which was the erroneous consideration of the occlusion. In reaction, the authors proposed Monodepth2, an increment of Monodepth v1.
+Neglecting this online approach, Monodepth v2 \cite{godard2019digging} is one of the best-known contributions in this field. In fact, it represents, even today, the state-of-the-art in terms of robust depth map estimation. Godard et al. \cite{godard2019digging} had in the past proposed an outstanding contribution that allowed a great advance. However, this previous method suffered from multiple flaws, one of which was the erroneous consideration of the occlusion. In reaction, the authors proposed Monodepth2, an increment of Monodepth v1.
 This approach introduces three game-changer concepts:
 \begin{itemize}
 	\item A new design of reprojection loss to consider occlusion (\textit{Reprojection})
@@ -785,7 +779,7 @@ Furthermore, some methods mobilize other further information to deduce the depth
 
 
 
-\textbf{Quantitative Evaluation.} This subpart proposes Table \ref{tab:evalsoadepth} to compare the different methods explained earlier. All methods have been evaluated on the Eigen Benchmark from KITTI dataset \cite{Geiger2012CVPR}.
+\textbf{Quantitative Evaluation.} This subpart proposes Table \ref{tab:evalsoadepth} to compare the different methods explained earlier. All methods have been evaluated on the Eigen Benchmark from KITTI dataset \cite{Geiger2012CVPR} using \cite{eigen2014depth} metrics set.
 
 % Please add the following required packages to your document preamble:
 % \usepackage{graphicx}
@@ -960,7 +954,7 @@ Furthermore, some methods mobilize other further information to deduce the depth
 
 \textbf{Summary and conclusions. } 
 
-As it has been demonstrated, the scientific community attaches considerable importance to depth estimation. In recent years, researchers have turned to modern deep learning methods. Indeed, this allows less constrained approaches. Regrettably, the use of these techniques ordinarily requires strong assumptions but above all a massive amount of data. Moreover, it is notable that the models trained with certain data are linked to it, and consequently, when the modality used neglects certain phenomena, so do the models. 
+As it has been demonstrated, the scientific community attaches considerable importance to depth estimation. In recent years, researchers have turned to modern deep learning methods. Indeed, this allows less constrained approaches. Regrettably, the use of these techniques ordinarily requires strong assumptions but above all a massive amount of data. Moreover, it is notable that the models trained with certain data are linked to it, and consequently, when the modality used neglects certain phenomena such as specularity, so do the models. 
 
 
 

@@ -103,7 +103,7 @@ headsepline, % Uncomment to get a line under the header
 %	THESIS INFORMATION
 %----------------------------------------------------------------------------------------
 
-\thesistitle{Road Scene Analysis with a multimodal stereovision system} % Your thesis title, this is used in the title and abstract, print it elsewhere with \ttitle
+\thesistitle{Polarization based urban scenes understanding} % Your thesis title, this is used in the title and abstract, print it elsewhere with \ttitle
 \supervisor{Prof. Fabrice Meriaudeau\\ Prof. Olivier Morel\\ Prof. D\'esir\'e Sidib\'e} % Your supervisor's name, this is used in the title page, print it elsewhere with \supname
 \examiner{Rapporteur:\\Rapporteur:\\Examinateur:\\Examinateur:\\Examinateur:} % Your examiner's name, this is not currently used anywhere in the template, print it elsewhere with \examname
 \degree{Doctor of Philosophy} % Your degree name, this is used in the title page and ct, print it elsewhere with \degreename
@@ -111,11 +111,11 @@ headsepline, % Uncomment to get a line under the header
 \addresses{} % Your address, this is not currently used anywhere in the template, print it elsewhere with \addressname
 
 \subject{Biological Sciences} % Your subject area, this is not currently used anywhere in the template, print it elsewhere with \subjectname
-\keywords{Polarimetry, multimodality, deep learning} % Keywords for your thesis, this is not currently used anywhere in the template, print it elsewhere with \keywordnames
+\keywords{Polarimetry, Computer Vision, Deep Learning} % Keywords for your thesis, this is not currently used anywhere in the template, print it elsewhere with \keywordnames
 \university{\href{http://www.ubfc.fr}{Universit\'e Bourgogne Franche-Comt\'e}} % Your university's name and URL, this is used in the title page and abstract, print it elsewhere with \univname
 \ED{\href{http://http://ed-spim.univ-fcomte.fr/}{\'Ecole Doctorale SPIM}}
 \department{\href{http://www.u-bourgogne.fr}{Universit\'e de Bourgogne}} % Your department's name and URL, this is used in the title page and abstract, print it elsewhere with \deptname
-\group{\href{http://vibot.cnrs.fr}{VIBOT ERL CNRS 6000 }} % Your research group's name and URL, this is used in the title page, print it elsewhere with \groupname
+\group{\href{http://vibot.cnrs.fr}{VIBOT EMR CNRS 6000 }} % Your research group's name and URL, this is used in the title page, print it elsewhere with \groupname
 \lab{\href{http://http://imvia.u-bourgogne.fr//}{ImViA, EA 7535}}
 \faculty{\href{http://faculty.university.com}{Faculty Name}} % Your faculty's name and URL, this is used in the title page and abstract, print it elsewhere with \facname
 
@@ -215,12 +215,12 @@ headsepline, % Uncomment to get a line under the header
 
 \begin{abstract}
 \addchaptertocentry{\abstractname} % Add the abstract to the table of contents
-\small{Humans possess an innate ability to interpret scenes under any condition. Computer Vision tends to these capabilities by implementing intelligent algorithms to address complex understanding problems. In this regard, we are interested in understanding outdoor urban scenes in various weather conditions. This thesis specifically addresses the problems arising from the presence of specularity in the scenes. To this end, we aim to take advantage of polarization indices to define such surfaces in addition to traditional objects. In terms of understanding, we aim to introduce polarimetry to the recurrent fields of computer vision and deep learning.
+\small{Humans possess an innate ability to interpret scenes under any condition. Computer Vision tends to mimic these capabilities by implementing intelligent algorithms to address complex understanding problems. In this regard, we are interested in understanding outdoor urban scenes in various weather conditions. This thesis specifically addresses the problems arising from the presence of specularity in the scenes. To this end, we aim to take advantage of polarization indices to define such surfaces in addition to traditional objects. In terms of understanding, we aim to introduce polarimetry to the fields of computer vision and deep learning.
 	
-	This thesis focuses on the following underlying challenges. First, the estimation of a semantic segmentation at the pixel level is investigated. We exploit polarization cues to define constraints upstream of the convolutional network and thus infuse specularity understanding into the model. As DCNNs are data intensive, we propose the acquisition of a multimodal dataset allowing the comparison of the proposed method with RGB-centric methods. Moreover, to counteract the massive need for data, we establish a procedure to augment the polarimetric informations while maintaining the physical integrity of the information.
-	In a second line of research, we address the problem of depth map estimation with a monocular image. Since the algorithms require a colorimetric information, we adapt the processes to an alternative type of imagery. This results in novel regularization terms that allow to accurately infer a depth map from a unique polarimetric image using deep learning. Constrained by the datavore aspect of DL, we build a loss function in accordance with the self-supervision principle. In this manner, we demonstrate the possibility to regularize the depth inference process using terms constraining the normals by relying on polarization. This approach allows us to reconstruct more accurately surfaces observing specular behavior or transparency phenomena.
+	This thesis focuses on the following underlying challenges. First, the estimation of a semantic segmentation at the pixel level is investigated. We exploit polarization cues to define constraints upstream of the convolutional network and thus inject specularity understanding into the model. As DCNNs are data intensive, we propose the acquisition of a multimodal dataset allowing the comparison of the proposed method with RGB-centric methods. Moreover, to counteract the massive need for data, we establish a procedure to augment the polarimetric informations while maintaining the physical integrity of the information.
+	In a second line of research, we address the problem of depth map estimation with a monocular image. Since the algorithms require a colorimetric information, we adapt the processes to an alternative type of imagery. This results in novel regularization terms that allow to accurately infer a depth map from a unique polarimetric image using deep learning. Constrained by the greedy aspect of DL, we build a loss function in accordance with the self-supervision principle. In this manner, we demonstrate the possibility to regularize the depth inference process using terms constraining the normals by relying on polarization. This approach allows us to reconstruct more accurately surfaces observing specular behavior or transparency phenomena.
 	
-	Ultimately, our two lines of research represent advances towards a more conventional use of polarization in modern computer vision.}
+	Ultimately, our two lines of research show advances towards a more conventional use of polarization in modern computer vision.}
 \end{abstract}
 
 %----------------------------------------------------------------------------------------
@@ -276,8 +276,8 @@ The acknowledgments and the people to thank go here, don't forget to include you
 % Uncomment the lines as you write the chapters
 
 \include{Chapters/Chapter1}
-\include{Chapters/Chapter2} 
 \include{Chapters/Chapter3}
+\include{Chapters/Chapter2}
 \include{Chapters/Chapter4} 
 \include{Chapters/Chapter5} 
 \include{Chapters/Chapter6} 
